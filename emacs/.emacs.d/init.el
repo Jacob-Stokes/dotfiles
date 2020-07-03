@@ -16,7 +16,7 @@
  '(org-startup-truncated nil)
  '(package-selected-packages
    (quote
-    (switch-window minimap dashboard all-the-icons projectile page-break-lines olivetti darkroom dracula-theme restart-emacs magit)))
+    (ox-pandoc pandoc-mode flyspell-correct-ivy switch-window minimap dashboard all-the-icons projectile page-break-lines olivetti darkroom dracula-theme restart-emacs magit)))
  '(writeroom-fullscreen-effect (quote maximized))
  '(writeroom-maximize-window nil))
 (custom-set-faces

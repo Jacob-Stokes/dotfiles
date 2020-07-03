@@ -37,12 +37,55 @@ There are two things you can do about this warning:
 (require 'dashboard)
 (dashboard-setup-startup-hook)
 
+(defun dcaps-to-scaps ()
+  "Convert word in DOuble CApitals to Single Capitals."
+  (interactive)
+  (and (= ?w (char-syntax (char-before)))
+       (save-excursion
+         (and (if (called-interactively-p)
+                  (skip-syntax-backward "w")
+                (= -3 (skip-syntax-backward "w")))
+              (let (case-fold-search)
+                (looking-at "\\b[[:upper:]]\\{2\\}[[:lower:]]"))
+              (capitalize-word 1)))))
+
+(add-hook 'post-self-insert-hook #'dcaps-to-scaps nil 'local)
+
+;; Dubcaps mode
+
+(define-minor-mode dubcaps-mode
+  "Toggle `dubcaps-mode'.  Converts words in DOuble CApitals to
+Single Capitals as you type."
+  :init-value nil
+  :lighter (" DC")
+  (if dubcaps-mode
+      (add-hook 'post-self-insert-hook #'dcaps-to-scaps nil 'local)
+    (remove-hook 'post-self-insert-hook #'dcaps-to-scaps 'local)))
+
+(add-hook 'org-mode-hook 'dubcaps-mode)
+(add-hook 'markdown-mode-hook 'dubcaps-mode)
+
+;; Spellcheck on for markdown mode
+
+(add-hook 'org-mode-hook 'flyspell-mode)
+
 (global-set-key (kbd "<f5>") 'restart-emacs)
 (global-set-key (kbd "<f6>") 'olivetti-mode)
 (global-set-key (kbd "<f12>") 'open-file-fast)
 (global-set-key (kbd "<M-f12>") 'package-install)
 
+(add-hook 'org-mode-hook 'pandoc-mode)
+
+(eval-after-load "org"
+  '(require 'ox-md nil t))
+
+(add-hook 'org-mode-hook 'pandoc-mode)
+
+(setq org-pandoc-options-for-latex-pdf '((pdf-engine . "pdflatex")))
+
 (set-register ?s (cons 'file "~/.emacs.d/settings.org"))
+
+(global-set-key (kbd "<f7>") 'shell)
 
 (defun open-file-fast ()
   "Prompt to open a file from bookmark `bookmark-bmenu-list'.

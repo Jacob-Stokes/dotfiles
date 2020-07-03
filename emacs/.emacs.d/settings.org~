@@ -1,3 +1,4 @@
+
 #+TITLE: Emacs Config
 #+AUTHOR: Jacob Stokes
 #+TOC: true
@@ -33,12 +34,19 @@ There are two things you can do about this warning:
 #+END_SRC
 
 ** Theme
-
 #+BEGIN_SRC emacs-lisp
 
 ;; Theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (load-theme 'dracula t)
+
+;; Enable transient mark mode
+
+;; -*- mode: elisp -*-
+;; Disable the splash screen (to enable it agin, replace the t with 0)
+(setq inhibit-splash-screen t)
+;; Enable transient mark mode
+(transient-mark-mode 1)
 
 #+END_SRC
 ** Turn off bars
@@ -46,11 +54,12 @@ There are two things you can do about this warning:
  (menu-bar-mode -1)
  (tool-bar-mode -1) 
  #+END_SRC
-
-
-
-
-
+** Disable splash screen
+#+BEGIN_SRC emacs-lisp
+;; -*- mode: elisp -*-
+;; Disable the splash screen (to enable it agin, replace the t with 0)
+(setq inhibit-splash-screen t)
+#+END_SRC   
 ** Dashboard
 
  #+BEGIN_SRC emacs-lisp
@@ -58,6 +67,7 @@ There are two things you can do about this warning:
  (dashboard-setup-startup-hook)
 
  #+END_SRC
+
 
 
 
