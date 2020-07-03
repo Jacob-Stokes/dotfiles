@@ -15,24 +15,15 @@ There are two things you can do about this warning:
   )
 (package-initialize)
 
-;; Theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (load-theme 'dracula t)
 
-;; Enable transient mark mode
-
-;; -*- mode: elisp -*-
-;; Disable the splash screen (to enable it agin, replace the t with 0)
-(setq inhibit-splash-screen t)
-;; Enable transient mark mode
 (transient-mark-mode 1)
+
+(setq inhibit-splash-screen t)
 
 (menu-bar-mode -1)
 (tool-bar-mode -1)
-
-;; -*- mode: elisp -*-
-;; Disable the splash screen (to enable it agin, replace the t with 0)
-(setq inhibit-splash-screen t)
 
 (require 'dashboard)
 (dashboard-setup-startup-hook)
@@ -50,6 +41,7 @@ There are two things you can do about this warning:
               (capitalize-word 1)))))
 
 (add-hook 'post-self-insert-hook #'dcaps-to-scaps nil 'local)
+
 
 ;; Dubcaps mode
 
@@ -140,3 +132,16 @@ Version 2019-02-26"
 (global-set-key (kbd "C-x 4 C-o") 'switch-window-then-display-buffer)
 
 (global-set-key (kbd "C-x 4 0") 'switch-window-then-kill-buffer)
+
+(defvar org-blocks-hidden nil)
+
+(defun org-toggle-blocks ()
+  (interactive)
+  (if org-blocks-hidden
+      (org-show-block-all)
+    (org-hide-block-all))
+  (setq-local org-blocks-hidden (not org-blocks-hidden)))
+
+(add-hook 'org-mode-hook 'org-toggle-blocks)
+
+(define-key org-mode-map (kbd "C-c t") 'org-toggle-blocks)

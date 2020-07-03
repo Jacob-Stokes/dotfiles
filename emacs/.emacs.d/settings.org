@@ -36,85 +36,81 @@ There are two things you can do about this warning:
 
 #+END_SRC
 
-** Theme
+** Appearence
 
-
+Set theme to dracula.
 #+BEGIN_SRC emacs-lisp
-
-;; Theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (load-theme 'dracula t)
+#+END_SRC
 
-;; Enable transient mark mode
+Enable transient dark mode.
+#+BEGIN_SRC emacs-lisp
 
-;; -*- mode: elisp -*-
-;; Disable the splash screen (to enable it agin, replace the t with 0)
-(setq inhibit-splash-screen t)
-;; Enable transient mark mode
 (transient-mark-mode 1)
 
 #+END_SRC
-** Turn off bars
+
+Disable splash screen.
+
+#+BEGIN_SRC emacs-lisp
+
+
+(setq inhibit-splash-screen t)
+
+
+#+END_SRC
+
+Turn off menu bar and tool bar.
  #+BEGIN_SRC emacs-lisp
  (menu-bar-mode -1)
  (tool-bar-mode -1) 
  #+END_SRC
-** Disable splash screen
-#+BEGIN_SRC emacs-lisp
-;; -*- mode: elisp -*-
-;; Disable the splash screen (to enable it agin, replace the t with 0)
-(setq inhibit-splash-screen t)
-#+END_SRC   
-** Dashboard
 
- #+BEGIN_SRC emacs-lisp
- (require 'dashboard)
- (dashboard-setup-startup-hook)
+Add in dashboard 
+#+BEGIN_SRC emacs-lisp
+  (require 'dashboard)
+  (dashboard-setup-startup-hook)
+
+  #+END_SRC
+
+* Writing 
+
+Dubcaps mode.
+#+BEGIN_SRC emacs-lisp
+
+ (defun dcaps-to-scaps ()
+   "Convert word in DOuble CApitals to Single Capitals."
+   (interactive)
+   (and (= ?w (char-syntax (char-before)))
+	(save-excursion
+          (and (if (called-interactively-p)
+                   (skip-syntax-backward "w")
+                 (= -3 (skip-syntax-backward "w")))
+               (let (case-fold-search)
+                 (looking-at "\\b[[:upper:]]\\{2\\}[[:lower:]]"))
+               (capitalize-word 1)))))
+
+ (add-hook 'post-self-insert-hook #'dcaps-to-scaps nil 'local)
+
+
+ ;; Dubcaps mode
+
+ (define-minor-mode dubcaps-mode
+   "Toggle `dubcaps-mode'.  Converts words in DOuble CApitals to
+ Single Capitals as you type."
+   :init-value nil
+   :lighter (" DC")
+   (if dubcaps-mode
+       (add-hook 'post-self-insert-hook #'dcaps-to-scaps nil 'local)
+     (remove-hook 'post-self-insert-hook #'dcaps-to-scaps 'local)))
+
+ (add-hook 'org-mode-hook 'dubcaps-mode)
+ (add-hook 'markdown-mode-hook 'dubcaps-mode)
 
  #+END_SRC
 
-
-* Writing 
-** Dubcaps Mode
-#+BEGIN_SRC emacs-lisp
-
-(defun dcaps-to-scaps ()
-  "Convert word in DOuble CApitals to Single Capitals."
-  (interactive)
-  (and (= ?w (char-syntax (char-before)))
-       (save-excursion
-         (and (if (called-interactively-p)
-                  (skip-syntax-backward "w")
-                (= -3 (skip-syntax-backward "w")))
-              (let (case-fold-search)
-                (looking-at "\\b[[:upper:]]\\{2\\}[[:lower:]]"))
-              (capitalize-word 1)))))
-
-(add-hook 'post-self-insert-hook #'dcaps-to-scaps nil 'local)
-
-
-
-#+END_SRC
-#+BEGIN_SRC emacs-lisp
-
-;; Dubcaps mode
-
-(define-minor-mode dubcaps-mode
-  "Toggle `dubcaps-mode'.  Converts words in DOuble CApitals to
-Single Capitals as you type."
-  :init-value nil
-  :lighter (" DC")
-  (if dubcaps-mode
-      (add-hook 'post-self-insert-hook #'dcaps-to-scaps nil 'local)
-    (remove-hook 'post-self-insert-hook #'dcaps-to-scaps 'local)))
-
-(add-hook 'org-mode-hook 'dubcaps-mode)
-(add-hook 'markdown-mode-hook 'dubcaps-mode)
-
-
-
-#+END_SRC
-** Flyspell
+Flyspell
 #+BEGIN_SRC emacs-lisp
 
 ;; Spellcheck on for markdown mode
@@ -249,3 +245,20 @@ Version 2019-02-26"
 (global-set-key (kbd "C-x 4 0") 'switch-window-then-kill-buffer)
 
 #+END_SRC 
+
+#+BEGIN_SRC emacs-lisp
+
+(defvar org-blocks-hidden nil)
+
+(defun org-toggle-blocks ()
+  (interactive)
+  (if org-blocks-hidden
+      (org-show-block-all)
+    (org-hide-block-all))
+  (setq-local org-blocks-hidden (not org-blocks-hidden)))
+
+(add-hook 'org-mode-hook 'org-toggle-blocks)
+
+(define-key org-mode-map (kbd "C-c t") 'org-toggle-blocks)
+
+#+END_SRC
