@@ -1,0 +1,1 @@
+(global-set-key (kbd "C-?") 'help-command)M-x global-set-key <RET> C-z shell <RET>
