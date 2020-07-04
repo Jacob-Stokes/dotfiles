@@ -38,9 +38,9 @@ There are two things you can do about this warning:
          (and (if (called-interactively-p)
                   (skip-syntax-backward "w")
                 (= -3 (skip-syntax-backward "w")))
-              (let (case-fold-search)
+	      (let (case-fold-search)
                 (looking-at "\\b[[:upper:]]\\{2\\}[[:lower:]]"))
-              (capitalize-word 1)))))
+	      (capitalize-word 1)))))
 
 (add-hook 'post-self-insert-hook #'dcaps-to-scaps nil 'local)
 
@@ -173,17 +173,11 @@ Version 2019-02-26"
 	 ("C-x 4 C-o" . switch-window-then-display-buffer)
 	 ("C-x 4 0" . switch-window-then-kill-buffer)))
 
-(defvar org-blocks-hidden nil)
-
-(defun org-toggle-blocks ()
-  (interactive)
-  (if org-blocks-hidden
-      (org-show-block-all)
-    (org-hide-block-all))
-  (setq-local org-blocks-hidden (not org-blocks-hidden)))
-
-(add-hook 'org-mode-hook 'org-toggle-blocks)
-
-(define-key org-mode-map (kbd "C-c t") 'org-toggle-blocks)
-
 (setq org-src-tab-acts-natively t)
+
+(setq bibtex-completion-bibliography
+      '("~/org-testing/citing/biblio.bib"))
+
+(add-hook 'shell-mode-hook
+      (lambda ()
+        (face-remap-set-base 'comint-highlight-prompt :inherit nil)))
