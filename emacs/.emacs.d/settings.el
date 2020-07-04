@@ -15,6 +15,8 @@ There are two things you can do about this warning:
   )
 (package-initialize)
 
+
+
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (load-theme 'dracula t)
 
@@ -57,14 +59,47 @@ Single Capitals as you type."
 (add-hook 'org-mode-hook 'dubcaps-mode)
 (add-hook 'markdown-mode-hook 'dubcaps-mode)
 
-;; Spellcheck on for markdown mode
+(use-package flyspell-correct
+     :ensure t
+ :after flyspell
+  :bind (:map flyspell-mode-map ("C-;" . flyspell-correct-wrapper)))
 
+(use-package flyspell-correct-ivy
+    :ensure t 
+ :after flyspell-correct)
+
+;; Hook to org mode
 (add-hook 'org-mode-hook 'flyspell-mode)
 
 (global-set-key (kbd "<f5>") 'restart-emacs)
 (global-set-key (kbd "<f6>") 'olivetti-mode)
 (global-set-key (kbd "<f12>") 'open-file-fast)
 (global-set-key (kbd "<M-f12>") 'package-install)
+
+(defun other-window-kill-buffer ()
+  "Kill the buffer in the other window"
+  (interactive)
+  ;; Window selection is used because point goes to a different window
+  ;; if more than 2 windows are present
+  (let ((win-curr (selected-window))
+	(win-other (next-window)))
+    (select-window win-other)
+    (kill-this-buffer)
+    (select-window win-curr)))
+
+(global-set-key (kbd "C-x K") 'other-window-kill-buffer)
+
+(defun is-help-buffer (buffer)
+  (let ((name (buffer-name buffer)))
+    (and (= ?* (aref name 0))
+	 (string-match "Help" name))))
+
+(defun kill-help-buffers ()
+  (interactive)
+  (cl-loop for buffer being the buffers
+	do (and (is-help-buffer buffer) (kill-buffer buffer))))
+
+(global-set-key (kbd "C-x C-k h") 'kill-help-buffers)
 
 (add-hook 'org-mode-hook 'pandoc-mode)
 
@@ -94,44 +129,49 @@ Version 2019-02-26"
     ;; (bookmark-jump $this-bookmark)
     ))
 
-(ivy-mode 1)
-(setq ivy-use-virtual-buffers t)
-(setq enable-recursive-minibuffers t)
-;; enable this if you want `swiper' to use it
-;; (setq search-default-mode #'char-fold-to-regexp)
-(global-set-key "\C-s" 'swiper)
-(global-set-key (kbd "C-c C-r") 'ivy-resume)
-(global-set-key (kbd "M-x") 'counsel-M-x)
-(global-set-key (kbd "C-x C-f") 'counsel-find-file)
-(global-set-key (kbd "<f1> f") 'counsel-describe-function)
-(global-set-key (kbd "<f1> v") 'counsel-describe-variable)
-(global-set-key (kbd "<f1> o") 'counsel-describe-symbol)
-(global-set-key (kbd "<f1> l") 'counsel-find-library)
-(global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
-(global-set-key (kbd "<f2> u") 'counsel-unicode-char)
-(global-set-key (kbd "C-c g") 'counsel-git)
-(global-set-key (kbd "C-c j") 'counsel-git-grep)
-(global-set-key (kbd "C-c k") 'counsel-ag)
-(global-set-key (kbd "C-x l") 'counsel-locate)
-(global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
-(define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history)
+(use-package counsel :ensure t
+  :after ivy
+  :bind (("M-x" . 'counsel-M-x)
+	 ("C-x C-f" . 'counsel-find-file)
+	 ("<f1> f" . 'counsel-describe-function)
+	 ("<f1> v" . 'counsel-describe-variable)
+	 ("<f1> o" . 'counsel-describe-symbol)
+	 ("<f1> l" . 'counsel-find-library)
+	 ("<f2> i" . 'counsel-info-lookup-symbol)
+	 ("<f2> u" . 'counsel-unicode-char)
+	 ("C-c g" . 'counsel-git)
+	 ("C-c j" . 'counsel-git-grep)
+	 ("C-c k" . 'counsel-ag)
+	 ("C-S-o" . 'counsel-rhythmbox)
+	 :map minibuffer-local-map ("C-r" . 'counsel-minibuffer-history)))
 
-(require 'switch-window)
-(global-set-key (kbd "C-x o") 'switch-window)
-(global-set-key (kbd "C-x 1") 'switch-window-then-maximize)
-(global-set-key (kbd "C-x 2") 'switch-window-then-split-below)
-(global-set-key (kbd "C-x 3") 'switch-window-then-split-right)
-(global-set-key (kbd "C-x 0") 'switch-window-then-delete)
+(use-package ivy :ensure t
+  :init (setq ivy-use-virtual-buffers t
+	      enable-recursive-minibuffers t)
+ :demand  :config (ivy-mode 1)
+ :bind (("C-c C-r" . ivy-resume)))
 
-(global-set-key (kbd "C-x 4 d") 'switch-window-then-dired)
-(global-set-key (kbd "C-x 4 f") 'switch-window-then-find-file)
-(global-set-key (kbd "C-x 4 m") 'switch-window-then-compose-mail)
-(global-set-key (kbd "C-x 4 r") 'switch-window-then-find-file-read-only)
+(use-package swiper :ensure t
+  :after ivy
+  :bind (("C-s" . swiper)
+	 ("C-r" . swiper)))
 
-(global-set-key (kbd "C-x 4 C-f") 'switch-window-then-find-file)
-(global-set-key (kbd "C-x 4 C-o") 'switch-window-then-display-buffer)
-
-(global-set-key (kbd "C-x 4 0") 'switch-window-then-kill-buffer)
+(use-package switch-window
+ :ensure t
+ :bind (("C-x o" . switch-window)
+	 ("C-x 1" . switch-window-then-maximize)
+	 ("C-x 2" . switch-window-then-split-below)
+	 ("C-x 3" . switch-window-then-split-right)
+	 ("C-x 0" . switch-window-then-delete)
+	 ("C-x 4 d" . switch-window-then-dired)
+	 ("C-x 4 f" . switch-window-then-find-file)
+	 ("C-x 4 m" . switch-window-then-compose-mail)
+	 ("C-x 4 r" . switch-window-then-find-file-read-only)
+	 ("C-x 4 C-f" . switch-window-then-find-file)
+	 ("C-x 4 C-o" . switch-window-then-find-file-read-only)
+	 ("C-x 4 C-f" . switch-window-then-find-file)
+	 ("C-x 4 C-o" . switch-window-then-display-buffer)
+	 ("C-x 4 0" . switch-window-then-kill-buffer)))
 
 (defvar org-blocks-hidden nil)
 
@@ -145,3 +185,5 @@ Version 2019-02-26"
 (add-hook 'org-mode-hook 'org-toggle-blocks)
 
 (define-key org-mode-map (kbd "C-c t") 'org-toggle-blocks)
+
+(setq org-src-tab-acts-natively t)

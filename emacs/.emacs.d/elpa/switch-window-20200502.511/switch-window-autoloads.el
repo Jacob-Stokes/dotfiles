@@ -6,8 +6,9 @@
                          (or (file-name-directory #$) (car load-path))))
 
 
-;;;### (autoloads nil "switch-window" "switch-window.el" (0 0 0 0))
-;;; Generated autoloads from switch-window.el
+;;;### (autoloads nil "switch-window" "../../../../../.emacs.d/elpa/switch-window-20200502.511/switch-window.el"
+;;;;;;  "3a93dd3418fa0ff5dee64d0f2640b54a")
+;;; Generated autoloads from ../../../../../.emacs.d/elpa/switch-window-20200502.511/switch-window.el
 
 (autoload 'switch-window-then-delete "switch-window" "\
 Display an overlay in each window showing a unique key.
@@ -98,28 +99,42 @@ Select a window, then start composing mail in it.
 Designed to replace `compose-mail-other-window'.
 
 \(fn)" t nil)
+
+;;;### (autoloads "actual autoloads are elsewhere" "switch-window"
+;;;;;;  "../../../../../.emacs.d/elpa/switch-window-20200502.511/switch-window.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from ../../../../../.emacs.d/elpa/switch-window-20200502.511/switch-window.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "switch-window" '("switch-window-" "delete-other-window")))
 
 ;;;***
+
+;;;***
 
-;;;### (autoloads nil "switch-window-asciiart" "switch-window-asciiart.el"
+;;;### (autoloads "actual autoloads are elsewhere" "switch-window-asciiart"
+;;;;;;  "../../../../../.emacs.d/elpa/switch-window-20200502.511/switch-window-asciiart.el"
 ;;;;;;  (0 0 0 0))
-;;; Generated autoloads from switch-window-asciiart.el
+;;; Generated autoloads from ../../../../../.emacs.d/elpa/switch-window-20200502.511/switch-window-asciiart.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "switch-window-asciiart" '("switch-window-asciiart")))
 
 ;;;***
 
-;;;### (autoloads nil "switch-window-mvborder" "switch-window-mvborder.el"
+;;;### (autoloads "actual autoloads are elsewhere" "switch-window-mvborder"
+;;;;;;  "../../../../../.emacs.d/elpa/switch-window-20200502.511/switch-window-mvborder.el"
 ;;;;;;  (0 0 0 0))
-;;; Generated autoloads from switch-window-mvborder.el
+;;; Generated autoloads from ../../../../../.emacs.d/elpa/switch-window-20200502.511/switch-window-mvborder.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "switch-window-mvborder" '("switch-window-")))
 
 ;;;***
 
-;;;### (autoloads nil nil ("switch-window-pkg.el") (0 0 0 0))
+;;;### (autoloads nil nil ("../../../../../.emacs.d/elpa/switch-window-20200502.511/switch-window-asciiart.el"
+;;;;;;  "../../../../../.emacs.d/elpa/switch-window-20200502.511/switch-window-autoloads.el"
+;;;;;;  "../../../../../.emacs.d/elpa/switch-window-20200502.511/switch-window-mvborder.el"
+;;;;;;  "../../../../../.emacs.d/elpa/switch-window-20200502.511/switch-window-pkg.el"
+;;;;;;  "../../../../../.emacs.d/elpa/switch-window-20200502.511/switch-window.el")
+;;;;;;  (0 0 0 0))
 
 ;;;***
 

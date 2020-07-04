@@ -6,9 +6,9 @@
                          (or (file-name-directory #$) (car load-path))))
 
 
-;;;### (autoloads nil "flyspell-correct" "flyspell-correct.el" (0
-;;;;;;  0 0 0))
-;;; Generated autoloads from flyspell-correct.el
+;;;### (autoloads nil "flyspell-correct" "../../../../../.emacs.d/elpa/flyspell-correct-20200601.944/flyspell-correct.el"
+;;;;;;  "d100a1ae96d1e52f3ffe34625386164f")
+;;; Generated autoloads from ../../../../../.emacs.d/elpa/flyspell-correct-20200601.944/flyspell-correct.el
 
 (autoload 'flyspell-correct-at-point "flyspell-correct" "\
 Correct word before point using `flyspell-correct-interface'.
@@ -71,14 +71,21 @@ more info in comment[1].
 https://github.com/syl20bnr/spacemacs/issues/6209#issuecomment-274320376
 
 \(fn &optional ARG)" t nil)
+
+;;;### (autoloads "actual autoloads are elsewhere" "flyspell-correct"
+;;;;;;  "../../../../../.emacs.d/elpa/flyspell-correct-20200601.944/flyspell-correct.el"
+;;;;;;  (0 0 0 0))
+;;; Generated autoloads from ../../../../../.emacs.d/elpa/flyspell-correct-20200601.944/flyspell-correct.el
 
 (if (fboundp 'register-definition-prefixes) (register-definition-prefixes "flyspell-correct" '("flyspell-correct-")))
 
 ;;;***
+
+;;;***
 
-;;;### (autoloads nil "flyspell-correct-ido" "flyspell-correct-ido.el"
-;;;;;;  (0 0 0 0))
-;;; Generated autoloads from flyspell-correct-ido.el
+;;;### (autoloads nil "flyspell-correct-ido" "../../../../../.emacs.d/elpa/flyspell-correct-20200601.944/flyspell-correct-ido.el"
+;;;;;;  "5b50a1c67d23444f1e0adedff2da5116")
+;;; Generated autoloads from ../../../../../.emacs.d/elpa/flyspell-correct-20200601.944/flyspell-correct-ido.el
 
 (autoload 'flyspell-correct-ido "flyspell-correct-ido" "\
 Run `ido-completing-read' for the given CANDIDATES.
@@ -92,7 +99,11 @@ of (command, word) to be used by `flyspell-do-correct'.
 
 ;;;***
 
-;;;### (autoloads nil nil ("flyspell-correct-pkg.el") (0 0 0 0))
+;;;### (autoloads nil nil ("../../../../../.emacs.d/elpa/flyspell-correct-20200601.944/flyspell-correct-autoloads.el"
+;;;;;;  "../../../../../.emacs.d/elpa/flyspell-correct-20200601.944/flyspell-correct-ido.el"
+;;;;;;  "../../../../../.emacs.d/elpa/flyspell-correct-20200601.944/flyspell-correct-pkg.el"
+;;;;;;  "../../../../../.emacs.d/elpa/flyspell-correct-20200601.944/flyspell-correct.el")
+;;;;;;  (0 0 0 0))
 
 ;;;***
 

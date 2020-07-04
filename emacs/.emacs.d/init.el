@@ -2,11 +2,11 @@
 ;;;;Org mode configuration
 ;; Enable Org mode
 (require 'org)
+(require 'cl-lib)
+
 (org-babel-load-file
  (expand-file-name "settings.org"
                    user-emacs-directory))
-
-
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -16,7 +16,7 @@
  '(org-startup-truncated nil)
  '(package-selected-packages
    (quote
-    (ox-pandoc pandoc-mode flyspell-correct-ivy switch-window minimap dashboard all-the-icons projectile page-break-lines olivetti darkroom dracula-theme restart-emacs magit)))
+    (use-package ox-pandoc pandoc-mode minimap dashboard all-the-icons projectile page-break-lines olivetti darkroom dracula-theme restart-emacs magit)))
  '(writeroom-fullscreen-effect (quote maximized))
  '(writeroom-maximize-window nil))
 (custom-set-faces

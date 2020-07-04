@@ -1,8 +1,4 @@
-;; -*- mode: elisp -*-
-;; Disable the splash screen (to enable it agin, replace the t with 0)
-(setq inhibit-splash-screen t)
-;; Enable transient mark mode
-(transient-mark-mode 1)
+
 ;;;;Org mode configuration
 ;; Enable Org mode
 (require 'org)
@@ -20,7 +16,7 @@
  '(org-startup-truncated nil)
  '(package-selected-packages
    (quote
-    (switch-window minimap dashboard all-the-icons projectile page-break-lines olivetti darkroom dracula-theme restart-emacs magit)))
+    (use-package ox-pandoc pandoc-mode flyspell-correct-ivy switch-window minimap dashboard all-the-icons projectile page-break-lines olivetti darkroom dracula-theme restart-emacs magit)))
  '(writeroom-fullscreen-effect (quote maximized))
  '(writeroom-maximize-window nil))
 (custom-set-faces
