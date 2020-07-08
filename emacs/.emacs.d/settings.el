@@ -24,7 +24,7 @@ There are two things you can do about this warning:
 
 (setq inhibit-splash-screen t)
 
-(menu-bar-mode -1)
+;; (menu-bar-mode -1)
 (tool-bar-mode -1)
 
 (require 'dashboard)
@@ -60,16 +60,16 @@ Single Capitals as you type."
 (add-hook 'markdown-mode-hook 'dubcaps-mode)
 
 (use-package flyspell-correct
-     :ensure t
- :after flyspell
-  :bind (:map flyspell-mode-map ("C-;" . flyspell-correct-wrapper)))
+      :ensure t
+  :after flyspell
+   :bind (:map flyspell-mode-map ("C-'" . flyspell-correct-wrapper)))
 
-(use-package flyspell-correct-ivy
-    :ensure t 
- :after flyspell-correct)
+ (use-package flyspell-correct-ivy
+     :ensure t 
+  :after flyspell-correct)
 
-;; Hook to org mode
-(add-hook 'org-mode-hook 'flyspell-mode)
+ ;; Hook to org mode
+;; (add-hook 'org-mode-hook 'flyspell-mode)
 
 (global-set-key (kbd "<f5>") 'restart-emacs)
 (global-set-key (kbd "<f6>") 'olivetti-mode)
@@ -101,6 +101,8 @@ Single Capitals as you type."
 
 (global-set-key (kbd "C-x C-k h") 'kill-help-buffers)
 
+(global-set-key (kbd "C-;") 'delete-backward-char)
+
 (add-hook 'org-mode-hook 'pandoc-mode)
 
 (eval-after-load "org"
@@ -113,6 +115,12 @@ Single Capitals as you type."
 (set-register ?s (cons 'file "~/.emacs.d/settings.org"))
 
 (global-set-key (kbd "<f7>") 'shell)
+
+(use-package elpy
+  :ensure t
+  :init (elpy-enable)
+  :config (setq elpy-rpc-python-command "python3")
+  )
 
 (defun open-file-fast ()
   "Prompt to open a file from bookmark `bookmark-bmenu-list'.
@@ -173,11 +181,101 @@ Version 2019-02-26"
 	 ("C-x 4 C-o" . switch-window-then-display-buffer)
 	 ("C-x 4 0" . switch-window-then-kill-buffer)))
 
+(defvar org-blocks-hidden nil)
+
+(defun org-toggle-blocks
+()
+  (interactive)
+  (if org-blocks-hidden
+      (org-show-block-all)
+    (org-hide-block-all))
+  (setq-local org-blocks-hidden (not org-blocks-hidden)))
+
+(add-hook 'org-mode-hook 'org-toggle-blocks)
+
+(define-key org-mode-map (kbd "C-c t") 'org-toggle-blocks)
+
 (setq org-src-tab-acts-natively t)
 
-(setq bibtex-completion-bibliography
-      '("~/org-testing/citing/biblio.bib"))
 
-(add-hook 'shell-mode-hook
-      (lambda ()
-        (face-remap-set-base 'comint-highlight-prompt :inherit nil)))
+
+(use-package pdf-tools
+  :ensure t
+  :config (pdf-tools-install))
+
+(setq org-agenda-files (apply 'append
+			      (mapcar
+			       (lambda (directory)
+				 (directory-files-recursively
+				  directory org-agenda-file-regexp))
+			       '("~/work/"))))
+
+(define-key global-map "\C-ca" 'org-agenda)
+(setq org-log-done t)
+
+(use-package org-super-agenda
+  :ensure t
+  :config
+ (setq org-super-agenda-groups '(
+			   (:name "Waiting"
+			       :tag "shop"))))
+
+(use-package org-journal
+  :ensure t
+  :config
+  (setq org-journal-dir "~/work/journal/"))
+
+;;  ;;(setq org-ref-completion-library 'org-ref-ivy-cite)
+;;  (require 'org-ref)
+;;
+;;  (setq org-ref-completion-library 'org-ref-ivy-cite)
+;;  (setq reftex-default-bibliography '("~/org-ref-test/bibs/bib1.bib"))
+;;
+;;  ;; see org-ref for use of these variables
+;;  (setq org-ref-bibliography-notes "~/org-ref-test/notes/notes.org"
+;;	org-ref-default-bibliography '("~/org-ref-test/bibs/bib1.bib")
+;;	org-ref-pdf-directory "~/org-ref-test/pdfs/")
+
+
+
+;;  (setq org-ref-insert-cite-key "C-c ]")
+;;
+;;  (defun harvard-cite (key page)
+;;    (interactive (list (completing-read "Cite: " (orhc-bibtex-candidates))
+;;	       (read-string "Page: "))))
+
+(setq bibtex-completion-bibliography
+      '("~/org-ref-test/bibs/Testing2.bib"
+        ))
+
+
+(setq bibtex-completion-format-citation-functions
+  '((org-mode      . bibtex-completion-format-citation-pandoc-citeproc)
+    (latex-mode    . bibtex-completion-format-citation-cite)
+    (markdown-mode . bibtex-completion-format-citation-pandoc-citeproc)
+    (default       . bibtex-completion-format-citation-default)))
+
+
+
+(setq ivy-bibtex-default-action 'ivy-bibtex-insert-citation)
+
+(global-set-key (kbd "C-c i") 'ivy-bibtex)
+
+(setq bibtex-completion-pdf-field "File")
+
+
+(defun bibtex-completion-open-pdf-of-entry-at-point ()
+  (interactive)
+  (save-excursion
+    (bibtex-beginning-of-entry)
+    (when (looking-at bibtex-entry-maybe-empty-head)
+      (bibtex-completion-open-pdf (bibtex-key-in-head)))))
+
+
+(defun my/print-reference-title ()
+  "Print the title to the reference at point in the minibuffer."
+  (interactive)
+  (message
+   (assoc-default "title"
+                  (bibtex-completion-get-entry
+                   (org-ref-get-bibtex-key-under-cursor)))))

@@ -1,0 +1,19 @@
+;; Emacs-W3 HTTP cookies file
+;; Automatically generated file!!! DO NOT EDIT!!!
+
+(setq url-cookie-storage
+ 'nil)
+(setq url-cookie-secure-storage
+ '(("reddit.com"
+  [url-cookie "edgebucket" "uhy9CzYvfXS4mMbS2C" "Thu Jul 07 11:47:50 2022 GMT" "/" "reddit.com" t])
+ (".reddit.com"
+  [url-cookie "loid" "000000000076xfm4fn.2.1594122469885.Z0FBQUFBQmZCR0RsNUNOU0ZpSHZxeWd6RjIyX1hOMkhmNGNSemRmd01TQUVlOGhkNW5JcGJPWlE3cS1jXzRzaWxYM2c4alIzTDQ5OVRNOUNNdjlYU2dXd3Q0VHpSeEV5S196YWVYcVRiQThPZnpSbXNRYnlVazRmdGJoNllsdlltZkJfS2xNWFQwUXM" "Thu, 07 Jul 2022 11:47:49 GMT" "/" ".reddit.com" t]
+  [url-cookie "d2_token" "3.d7449e53d4c4daa71626de2a3050f1d31ca7dd3d0bf649eda595f91929e929f0.eyJhY2Nlc3NUb2tlbiI6Ii1EQUxndXRUcmZJN3JILWpVcHdfUDMzQkdZVkUiLCJleHBpcmVzIjoiMjAyMC0wNy0wN1QxMjo0Nzo0OS4wMDBaIiwibG9nZ2VkT3V0Ijp0cnVlLCJzY29wZXMiOlsiKiIsImVtYWlsIl19" "Thu, 07 Jul 2022 11:47:49 GMT" "/" ".reddit.com" t]
+  [url-cookie "eu_cookie_v2" "1" "Sun, 07 Jul 2030 11:47:49 GMT" "/" ".reddit.com" t]
+  [url-cookie "csv" "1" "Thu Jul 07 11:47:51 2022 GMT" "/" ".reddit.com" t]))
+)
+
+;; Local Variables:
+;; version-control: never
+;; no-byte-compile: t
+;; End:

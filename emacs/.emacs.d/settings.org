@@ -1,3 +1,4 @@
+
 #+TITLE: Emacs Config
 #+AUTHOR: Jacob Stokes
 #+TOC: true
@@ -59,8 +60,8 @@ There are two things you can do about this warning:
  #+END_SRC
 *** Turn off menu bar and tool bar.
   #+BEGIN_SRC emacs-lisp
-  (menu-bar-mode -1)
-  (tool-bar-mode -1) 
+ ;; (menu-bar-mode -1)
+(tool-bar-mode -1) 
   #+END_SRC
 *** Add in dashboard 
  #+BEGIN_SRC emacs-lisp
@@ -109,14 +110,14 @@ There are two things you can do about this warning:
  (use-package flyspell-correct
       :ensure t
   :after flyspell
-   :bind (:map flyspell-mode-map ("C-;" . flyspell-correct-wrapper)))
+   :bind (:map flyspell-mode-map ("C-'" . flyspell-correct-wrapper)))
 
  (use-package flyspell-correct-ivy
      :ensure t 
   :after flyspell-correct)
 
  ;; Hook to org mode
- (add-hook 'org-mode-hook 'flyspell-mode)
+;; (add-hook 'org-mode-hook 'flyspell-mode)
 
 
 
@@ -153,7 +154,6 @@ There are two things you can do about this warning:
 
 #+END_SRC
 
-
 ** Kill all buffers matching string, no prompt
 #+BEGIN_SRC emacs-lisp
 
@@ -172,6 +172,14 @@ There are two things you can do about this warning:
 
 
 #+END_SRC
+
+** Delete shortcuts
+#+BEGIN_SRC emacs-lisp
+
+(global-set-key (kbd "C-;") 'delete-backward-char)
+
+#+END_SRC
+
 
 * Pandoc
 ** Pandoc-mode
@@ -193,9 +201,6 @@ There are two things you can do about this warning:
 
 #+END_SRC
 
-
-Ox-pandoc
-
 #+BEGIN_SRC emacs-lisp
 
 (add-hook 'org-mode-hook 'pandoc-mode)
@@ -203,7 +208,6 @@ Ox-pandoc
 (setq org-pandoc-options-for-latex-pdf '((pdf-engine . "pdflatex")))
 
 #+END_SRC
-
 * Registers
 
 #+BEGIN_SRC emacs-lisp
@@ -217,6 +221,22 @@ Ox-pandoc
 (global-set-key (kbd "<f7>") 'shell)
 
 #+END_SRC
+
+* Environments
+
+** Python
+
+*** Elpy
+#+BEGIN_SRC emacs-lisp
+
+  (use-package elpy
+    :ensure t
+    :init (elpy-enable)
+    :config (setq elpy-rpc-python-command "python3")
+    )
+
+#+END_SRC
+
 * Testing
 ** Open-file-fast
 #+BEGIN_SRC emacs-lisp
@@ -293,21 +313,21 @@ Version 2019-02-26"
 
 
 
- #+BEGIN_SRC EMACS-LISP
+ #+BEGIN_SRC emacs-lisp
 
- (DEFVAR org-blocks-hidden nil)
+   (defvar org-blocks-hidden nil)
 
- (defun org-toggle-blocks ()
-   (interactive)
-   (if org-blocks-hidden
-       (org-show-block-all)
-     (org-hide-block-all))
-   (setq-local org-blocks-hidden (not org-blocks-hidden)))
+   (defun org-toggle-blocks
+   ()
+     (interactive)
+     (if org-blocks-hidden
+	 (org-show-block-all)
+       (org-hide-block-all))
+     (setq-local org-blocks-hidden (not org-blocks-hidden)))
 
- (add-hook 'org-mode-hook 'org-toggle-blocks)
+   (add-hook 'org-mode-hook 'org-toggle-blocks)
 
- (define-key org-mode-map (kbd "C-c t") 'org-toggle-blocks)
-
+   (define-key org-mode-map (kbd "C-c t") 'org-toggle-blocks)
  #+END_SRC
 
 
@@ -321,22 +341,144 @@ Version 2019-02-26"
 ** Ivy-bibtex
 #+BEGIN_SRC emacs-lisp
 
-  (setq bibtex-completion-bibliography
-	'("~/org-testing/citing/biblio.bib"))
 
 
 #+END_SRC
 
 
-** Orphaned
+** Pdf-tools
 
-*** Terminal colours?
 #+BEGIN_SRC emacs-lisp
 
-(add-hook 'shell-mode-hook
-      (lambda ()
-        (face-remap-set-base 'comint-highlight-prompt :inherit nil)))
+  (use-package pdf-tools
+    :ensure t
+    :config (pdf-tools-install))
+
 
 #+END_SRC
+
+
+
+
+
+** Org-agenda
+
+#+BEGIN_SRC emacs-lisp
+
+
+(setq org-agenda-files (apply 'append
+			      (mapcar
+			       (lambda (directory)
+				 (directory-files-recursively
+				  directory org-agenda-file-regexp))
+			       '("~/work/"))))
+
+(define-key global-map "\C-ca" 'org-agenda)
+(setq org-log-done t)
+
+#+END_SRC
+
+
+** Org-Super-Agenda
+ #+BEGIN_SRC emacs-lisp
+
+   (use-package org-super-agenda
+     :ensure t
+     :config
+    (setq org-super-agenda-groups '(
+			      (:name "Waiting"
+				  :tag "shop"))))
+ #+END_SRC
+
+
+** Org-Journal
+
+#+BEGIN_SRC emacs-lisp
+
+  (use-package org-journal
+    :ensure t
+    :config
+    (setq org-journal-dir "~/work/journal/"))
+
+#+END_SRC
+
+
+
+* Org-Ref
+#+BEGIN_SRC emacs-lisp
+
+;;  ;;(setq org-ref-completion-library 'org-ref-ivy-cite)
+;;  (require 'org-ref)
+;;
+;;  (setq org-ref-completion-library 'org-ref-ivy-cite)
+;;  (setq reftex-default-bibliography '("~/org-ref-test/bibs/bib1.bib"))
+;;
+;;  ;; see org-ref for use of these variables
+;;  (setq org-ref-bibliography-notes "~/org-ref-test/notes/notes.org"
+;;	org-ref-default-bibliography '("~/org-ref-test/bibs/bib1.bib")
+;;	org-ref-pdf-directory "~/org-ref-test/pdfs/")
+
+
+
+;;  (setq org-ref-insert-cite-key "C-c ]")
+;;
+;;  (defun harvard-cite (key page)
+;;    (interactive (list (completing-read "Cite: " (orhc-bibtex-candidates))
+;;	       (read-string "Page: "))))
+
+
+
+
+
+
+#+END_SRC
+
+
+** Reftex
+
+#+BEGIN_SRC emacs-lisp
+(setq bibtex-completion-bibliography
+      '("~/org-ref-test/bibs/Testing2.bib"
+        ))
+
+
+(setq bibtex-completion-format-citation-functions
+  '((org-mode      . bibtex-completion-format-citation-pandoc-citeproc)
+    (latex-mode    . bibtex-completion-format-citation-cite)
+    (markdown-mode . bibtex-completion-format-citation-pandoc-citeproc)
+    (default       . bibtex-completion-format-citation-default)))
+
+
+
+(setq ivy-bibtex-default-action 'ivy-bibtex-insert-citation)
+
+(global-set-key (kbd "C-c i") 'ivy-bibtex)
+
+(setq bibtex-completion-pdf-field "File")
+
+
+(defun bibtex-completion-open-pdf-of-entry-at-point ()
+  (interactive)
+  (save-excursion
+    (bibtex-beginning-of-entry)
+    (when (looking-at bibtex-entry-maybe-empty-head)
+      (bibtex-completion-open-pdf (bibtex-key-in-head)))))
+
+
+(defun my/print-reference-title ()
+  "Print the title to the reference at point in the minibuffer."
+  (interactive)
+  (message
+   (assoc-default "title"
+                  (bibtex-completion-get-entry
+                   (org-ref-get-bibtex-key-under-cursor)))))
+
+
+#+END_SRC
+
+
+
+
+
 
 

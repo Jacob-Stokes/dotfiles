@@ -16,7 +16,7 @@
  '(org-startup-truncated nil)
  '(package-selected-packages
    (quote
-    (ivy-bibtex use-package ox-pandoc pandoc-mode minimap dashboard all-the-icons projectile page-break-lines olivetti darkroom dracula-theme restart-emacs magit)))
+    (zotxt org-ref ivy-bibtex use-package ox-pandoc pandoc-mode minimap dashboard all-the-icons projectile page-break-lines olivetti darkroom dracula-theme restart-emacs magit)))
  '(writeroom-fullscreen-effect (quote maximized))
  '(writeroom-maximize-window nil))
 (custom-set-faces
