@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: python-export-both
+# key: <py
+# --
+#+begin_src python :exports both :results output pp
+$0
+#+end_src

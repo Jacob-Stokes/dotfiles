@@ -17,18 +17,40 @@ There are two things you can do about this warning:
 
 
 
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-(load-theme 'dracula t)
+;; (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+;; (load-theme 'dracula t)
 
-(transient-mark-mode 1)
+;; (transient-mark-mode 1)
 
 (setq inhibit-splash-screen t)
 
-;; (menu-bar-mode -1)
-(tool-bar-mode -1)
+(menu-bar-mode -1)
+(tool-bar-mode -1) 
+(scroll-bar-mode -1)
 
 (require 'dashboard)
 (dashboard-setup-startup-hook)
+
+(use-package doom-themes
+:ensure t  
+:config
+  ;; Global settings (defaults)
+ ;; (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+   ;;     doom-themes-enable-italic t) ; if nil, italics is universally disabled
+  (load-theme 'doom-vibrant t)
+  (doom-themes-org-config))
+
+  ;; Enable flashing mode-line on errors
+ ;; (doom-themes-visual-bell-config)
+
+  ;; Enable custom neotree theme (all-the-icons must be installed!)
+  ;;(doom-themes-neotree-config)
+  ;; or for treemacs users
+ ;; (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
+ ;; (doom-themes-treemacs-config)
+
+  ;; Corrects (and improves) org-mode's native fontification.
+  ;;(doom-themes-org-config))
 
 (defun dcaps-to-scaps ()
   "Convert word in DOuble CApitals to Single Capitals."
@@ -112,7 +134,19 @@ Single Capitals as you type."
 
 (setq org-pandoc-options-for-latex-pdf '((pdf-engine . "pdflatex")))
 
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((python . t)))
+
+;;(setq org-confirm-babel-evaluate nil) 
+
+
+(setq org-babel-python-command "python3")
+
 (set-register ?s (cons 'file "~/.emacs.d/settings.org"))
+
+(yas-global-mode 1)
+(global-set-key (kbd "C-c 8") 'yas-insert-snippet)
 
 (global-set-key (kbd "<f7>") 'shell)
 
