@@ -1,14 +1,10 @@
-y
 #+TITLE: Emacs Config
 #+AUTHOR: Jacob Stokes
 #+TOC: true
 #+DATE: 
-
 * Setup
 ** Configure package sources
-
-Add Melpa 
-
+Add Melpa. 
 #+BEGIN_SRC emacs-lisp
 
 (require 'package)
@@ -30,182 +26,207 @@ There are two things you can do about this warning:
 
 #+END_SRC
 
-** Use Package
-#+BEGIN_SRC emacs-lisp
+*** Use Package
+ #+BEGIN_SRC emacs-lisp
 
 
 
 
-#+END_SRC
+ #+END_SRC
 ** Appearence
-*** Set theme to dracula.
- #+BEGIN_SRC emacs-lisp
-;; (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-;; (load-theme 'dracula t)
- #+END_SRC
-*** Enable transient dark mode.
- #+BEGIN_SRC emacs-lisp
-
-;; (transient-mark-mode 1)
-
- #+END_SRC
-*** Disable splash screen.
-
- #+BEGIN_SRC emacs-lisp
-
-
- (setq inhibit-splash-screen t)
-
-
- #+END_SRC
 *** Turn off menu bar and tool bar.
   #+BEGIN_SRC emacs-lisp
- (menu-bar-mode -1)
-(tool-bar-mode -1) 
-(scroll-bar-mode -1)
+    (menu-bar-mode -1)
+    (tool-bar-mode -1) 
+    (scroll-bar-mode -1)
   #+END_SRC
 *** Add in dashboard 
- #+BEGIN_SRC emacs-lisp
-   (require 'dashboard)
-   (dashboard-setup-startup-hook)
+ This sets up the dashboard.
 
-   #+END_SRC
-*** Doom
-Themes
+  #+BEGIN_SRC emacs-lisp
+    (require 'dashboard)
+    (dashboard-setup-startup-hook)
+    (setq dashboard-center-content t)
+
+
+    ;;   (defun dashboard-insert-custom (list-size)
+    ;;     (insert "Custom text"))
+    ;;   (add-to-list 'dashboard-item-generators  '(custom . dashboard-insert-custom))
+    ;;   (add-to-list 'dashboard-items '(custom) t)
+    ;;
+    ;;
+    ;;
+    ;;   (setq dashboard-items '((recents  . 0)
+    ;;			   (bookmarks . 0)
+    ;;			   (projects . 0)
+    ;;			   (agenda . 0)
+    ;;			   (registers . 0)))
+    #+END_SRC
+*** Doom Themes
+
+Doom themes.  Various options disabled for the time being.
+
 #+BEGIN_SRC emacs-lisp
   (use-package doom-themes
-  :ensure t  
-  :config
+    :ensure t  
+    :config
     ;; Global settings (defaults)
-   ;; (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-     ;;     doom-themes-enable-italic t) ; if nil, italics is universally disabled
+    ;; (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+    ;;     doom-themes-enable-italic t) ; if nil, italics is universally disabled
     (load-theme 'doom-vibrant t)
     (doom-themes-org-config))
 
-    ;; Enable flashing mode-line on errors
-   ;; (doom-themes-visual-bell-config)
-  
-    ;; Enable custom neotree theme (all-the-icons must be installed!)
-    ;;(doom-themes-neotree-config)
-    ;; or for treemacs users
-   ;; (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
-   ;; (doom-themes-treemacs-config)
-  
-    ;; Corrects (and improves) org-mode's native fontification.
-    ;;(doom-themes-org-config))
+  ;; Enable flashing mode-line on errors
+  ;; (doom-themes-visual-bell-config)
+
+  ;; Enable custom neotree theme (all-the-icons must be installed!)
+  ;;(doom-themes-neotree-config)
+  ;; or for treemacs users
+  ;; (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
+  ;; (doom-themes-treemacs-config)
+
+  ;; Corrects (and improves) org-mode's native fontification.
+  ;;(doom-themes-org-config))
+
+#+END_SRC
+** Dashboard
+** Disable splash screen.
+Does what is says on the tin.  Allows the Dashboard to be loaded. 
+ #+BEGIN_SRC emacs-lisp
+
+ (setq inhibit-splash-screen t)
+
+ #+END_SRC
+** Key Bindings
+*** General bindings - to sort
+ #+BEGIN_SRC emacs-lisp 
+
+   (global-set-key (kbd "<f5>") 'restart-emacs)
+   (global-set-key (kbd "<f6>") 'olivetti-mode)
+   (global-set-key (kbd "<f12>") 'open-file-fast)
+   (global-set-key (kbd "<M-f12>") 'package-install)
+
+ #+END_SRC
+
+*** Kill other buffer.
+
+ #+BEGIN_SRC emacs-lisp
+
+   (defun other-window-kill-buffer ()
+     "Kill the buffer in the other window"
+     (interactive)
+     ;; Window selection is used because point goes to a different window
+     ;; if more than 2 windows are present
+     (let ((win-curr (selected-window))
+	   (win-other (next-window)))
+       (select-window win-other)
+       (kill-this-buffer)
+       (select-window win-curr)))
+
+   (global-set-key (kbd "C-x K") 'other-window-kill-buffer)
+
+
+ #+END_SRC
+
+*** Kill all buffers matching string, no prompt
+ #+BEGIN_SRC emacs-lisp
+
+   (defun is-help-buffer (buffer)
+     (let ((name (buffer-name buffer)))
+       (and (= ?* (aref name 0))
+	    (string-match "Help" name))))
+
+   (defun kill-help-buffers ()
+     (interactive)
+     (cl-loop for buffer being the buffers
+	   do (and (is-help-buffer buffer) (kill-buffer buffer))))
+
+   (global-set-key (kbd "C-x C-k h") 'kill-help-buffers)
+
+
+
+ #+END_SRC
+
+*** Delete shortcuts
+ #+BEGIN_SRC emacs-lisp
+
+   (global-set-key (kbd "C-;") 'delete-backward-char)
+
+
+ #+END_SRC
+
+*** Comment out
+**** Elisp
+  #+BEGIN_SRC emacs-lisp
+
+    (global-set-key (kbd "C-c C-;") 'elisp-comment-out)
+
+  #+END_SRC
+*** Rebind org-agenda-files
+#+BEGIN_SRC emacs-lisp
+
+  ;;(global-set-key (kbd "C-x ,") 'org-cycle-agenda-files)
+#+END_SRC
+*** Windmove
+#+BEGIN_SRC emacs-lisp
+
+;; (global-set-key (kbd "C-,")  'windmove-left)
+;; (global-set-key (kbd "C-. <right>") 'windmove-right)
+
+
 
 #+END_SRC
 * Writing 
 ** Dubcaps mode.
  #+BEGIN_SRC emacs-lisp
 
-  (defun dcaps-to-scaps ()
-    "Convert word in DOuble CApitals to Single Capitals."
-    (interactive)
-    (and (= ?w (char-syntax (char-before)))
-	 (save-excursion
-           (and (if (called-interactively-p)
-                    (skip-syntax-backward "w")
-                  (= -3 (skip-syntax-backward "w")))
-		(let (case-fold-search)
-                  (looking-at "\\b[[:upper:]]\\{2\\}[[:lower:]]"))
-		(capitalize-word 1)))))
+   (defun dcaps-to-scaps ()
+     "Convert word in DOuble CApitals to Single Capitals."
+     (interactive)
+     (and (= ?w (char-syntax (char-before)))
+	  (save-excursion
+	    (and (if (called-interactively-p)
+		     (skip-syntax-backward "w")
+		   (= -3 (skip-syntax-backward "w")))
+		 (let (case-fold-search)
+		   (looking-at "\\b[[:upper:]]\\{2\\}[[:lower:]]"))
+		 (capitalize-word 1)))))
 
-  (add-hook 'post-self-insert-hook #'dcaps-to-scaps nil 'local)
+   (add-hook 'post-self-insert-hook #'dcaps-to-scaps nil 'local)
 
 
-  ;; Dubcaps mode
+   ;; Dubcaps mode
 
-  (define-minor-mode dubcaps-mode
-    "Toggle `dubcaps-mode'.  Converts words in DOuble CApitals to
-  Single Capitals as you type."
-    :init-value nil
-    :lighter (" DC")
-    (if dubcaps-mode
-	(add-hook 'post-self-insert-hook #'dcaps-to-scaps nil 'local)
-      (remove-hook 'post-self-insert-hook #'dcaps-to-scaps 'local)))
+   (define-minor-mode dubcaps-mode
+     "Toggle `dubcaps-mode'.  Converts words in DOuble CApitals to
+   Single Capitals as you type."
+     :init-value nil
+     :lighter (" DC")
+     (if dubcaps-mode
+	 (add-hook 'post-self-insert-hook #'dcaps-to-scaps nil 'local)
+       (remove-hook 'post-self-insert-hook #'dcaps-to-scaps 'local)))
 
-  (add-hook 'org-mode-hook 'dubcaps-mode)
-  (add-hook 'markdown-mode-hook 'dubcaps-mode)
+   (add-hook 'org-mode-hook 'dubcaps-mode)
+   (add-hook 'markdown-mode-hook 'dubcaps-mode)
 
   #+END_SRC
-
 ** Flyspell
  #+BEGIN_SRC emacs-lisp
- (use-package flyspell-correct
+    (use-package flyspell-correct
       :ensure t
-  :after flyspell
-   :bind (:map flyspell-mode-map ("C-'" . flyspell-correct-wrapper)))
+      :after flyspell
+      :bind (:map flyspell-mode-map ("C-'" . flyspell-correct-wrapper)))
 
- (use-package flyspell-correct-ivy
+    (use-package flyspell-correct-ivy
      :ensure t 
-  :after flyspell-correct)
+     :after flyspell-correct)
 
- ;; Hook to org mode
-;; (add-hook 'org-mode-hook 'flyspell-mode)
+    ;; Hook to org mode
+   ;; (add-hook 'org-mode-hook 'flyspell-mode)
 
 
 
  #+END_SRC
-
-* Key Bindings
-** General bindings - to sort
-#+BEGIN_SRC emacs-lisp 
-
-(global-set-key (kbd "<f5>") 'restart-emacs)
-(global-set-key (kbd "<f6>") 'olivetti-mode)
-(global-set-key (kbd "<f12>") 'open-file-fast)
-(global-set-key (kbd "<M-f12>") 'package-install)
-
-#+END_SRC
-
-** Kill other buffer.
-
-#+BEGIN_SRC emacs-lisp
-
-(defun other-window-kill-buffer ()
-  "Kill the buffer in the other window"
-  (interactive)
-  ;; Window selection is used because point goes to a different window
-  ;; if more than 2 windows are present
-  (let ((win-curr (selected-window))
-	(win-other (next-window)))
-    (select-window win-other)
-    (kill-this-buffer)
-    (select-window win-curr)))
-
-(global-set-key (kbd "C-x K") 'other-window-kill-buffer)
-
-
-#+END_SRC
-
-** Kill all buffers matching string, no prompt
-#+BEGIN_SRC emacs-lisp
-
-(defun is-help-buffer (buffer)
-  (let ((name (buffer-name buffer)))
-    (and (= ?* (aref name 0))
-	 (string-match "Help" name))))
-
-(defun kill-help-buffers ()
-  (interactive)
-  (cl-loop for buffer being the buffers
-	do (and (is-help-buffer buffer) (kill-buffer buffer))))
-
-(global-set-key (kbd "C-x C-k h") 'kill-help-buffers)
-
-
-
-#+END_SRC
-
-** Delete shortcuts
-#+BEGIN_SRC emacs-lisp
-
-(global-set-key (kbd "C-;") 'delete-backward-char)
-
-
-#+END_SRC
-
 * Pandoc
 ** Pandoc-mode
 
@@ -215,7 +236,6 @@ Themes
 
 
 #+END_SRC
-
 * Org-mode
 ** Required
 
@@ -246,6 +266,87 @@ Themes
 (setq org-babel-python-command "python3")
 
 #+END_SRC
+
+** Org-Ref
+ #+BEGIN_SRC emacs-lisp
+
+ ;;  ;;(setq org-ref-completion-library 'org-ref-ivy-cite)
+ ;;  (require 'org-ref)
+ ;;
+ ;;  (setq org-ref-completion-library 'org-ref-ivy-cite)
+ ;;  (setq reftex-default-bibliography '("~/org-ref-test/bibs/bib1.bib"))
+ ;;
+ ;;  ;; see org-ref for use of these variables
+ ;;  (setq org-ref-bibliography-notes "~/org-ref-test/notes/notes.org"
+ ;;	org-ref-default-bibliography '("~/org-ref-test/bibs/bib1.bib")
+ ;;	org-ref-pdf-directory "~/org-ref-test/pdfs/")
+
+
+
+ ;;  (setq org-ref-insert-cite-key "C-c ]")
+ ;;
+ ;;  (defun harvard-cite (key page)
+ ;;    (interactive (list (completing-read "Cite: " (orhc-bibtex-candidates))
+ ;;	       (read-string "Page: "))))
+
+
+
+
+
+
+ #+END_SRC
+
+
+*** Reftex
+
+ #+BEGIN_SRC emacs-lisp
+ (setq bibtex-completion-bibliography
+       '("~/org-ref-test/bibs/Testing2.bib"
+         ))
+
+
+ (setq bibtex-completion-format-citation-functions
+   '((org-mode      . bibtex-completion-format-citation-pandoc-citeproc)
+     (latex-mode    . bibtex-completion-format-citation-cite)
+     (markdown-mode . bibtex-completion-format-citation-pandoc-citeproc)
+     (default       . bibtex-completion-format-citation-default)))
+
+
+
+ (setq ivy-bibtex-default-action 'ivy-bibtex-insert-citation)
+
+ (global-set-key (kbd "C-c i") 'ivy-bibtex)
+
+ (setq bibtex-completion-pdf-field "File")
+
+
+ (defun bibtex-completion-open-pdf-of-entry-at-point ()
+   (interactive)
+   (save-excursion
+     (bibtex-beginning-of-entry)
+     (when (looking-at bibtex-entry-maybe-empty-head)
+       (bibtex-completion-open-pdf (bibtex-key-in-head)))))
+
+
+ (defun my/print-reference-title ()
+   "Print the title to the reference at point in the minibuffer."
+   (interactive)
+   (message
+    (assoc-default "title"
+                   (bibtex-completion-get-entry
+                    (org-ref-get-bibtex-key-under-cursor)))))
+
+
+ #+END_SRC
+ .
+
+
+ c
+** Tweaks
+*** Org-Identation
+#+begin_src python :exports both :results output pp
+(setq org-startup-indented t)
+#+end_src
 * Registers
 
 #+BEGIN_SRC emacs-lisp
@@ -269,7 +370,6 @@ Themes
 #+END_SRC
 
 * Environments
-
 ** Python
 
 *** Elpy
@@ -282,7 +382,6 @@ Themes
     )
 
 #+END_SRC
-
 * Testing
 ** Open-file-fast
 #+BEGIN_SRC emacs-lisp
@@ -324,7 +423,7 @@ Version 2019-02-26"
 
    (use-package ivy :ensure t
      :init (setq ivy-use-virtual-buffers t
-		 enable-recursive-minibuffers t)
+     enable-recursive-minibuffers t)
     :demand  :config (ivy-mode 1)
     :bind (("C-c C-r" . ivy-resume)))
 
@@ -339,22 +438,22 @@ Version 2019-02-26"
 
 ** Switch Window
  #+BEGIN_SRC emacs-lisp 
-   (use-package switch-window
-    :ensure t
-    :bind (("C-x o" . switch-window)
-	    ("C-x 1" . switch-window-then-maximize)
-	    ("C-x 2" . switch-window-then-split-below)
-	    ("C-x 3" . switch-window-then-split-right)
-	    ("C-x 0" . switch-window-then-delete)
-	    ("C-x 4 d" . switch-window-then-dired)
-	    ("C-x 4 f" . switch-window-then-find-file)
-	    ("C-x 4 m" . switch-window-then-compose-mail)
-	    ("C-x 4 r" . switch-window-then-find-file-read-only)
-	    ("C-x 4 C-f" . switch-window-then-find-file)
-	    ("C-x 4 C-o" . switch-window-then-find-file-read-only)
-	    ("C-x 4 C-f" . switch-window-then-find-file)
-	    ("C-x 4 C-o" . switch-window-then-display-buffer)
-	    ("C-x 4 0" . switch-window-then-kill-buffer)))
+  ;; (use-package switch-window
+   ;; :ensure t
+   ;; :bind (("C-x o" . switch-window)
+;;	    ("C-x 1" . switch-window-then-maximize)
+;;	    ("C-x 2" . switch-window-then-split-below)
+;;	    ("C-x 3" . switch-window-then-split-right)
+;;	    ("C-x 0" . switch-window-then-delete)
+;;	    ("C-x 4 d" . switch-window-then-dired)
+;;	    ("C-x 4 f" . switch-window-then-find-file)
+;;	    ("C-x 4 m" . switch-window-then-compose-mail)
+;;	    ("C-x 4 r" . switch-window-then-find-file-read-only)
+;;	    ("C-x 4 C-f" . switch-window-then-find-file)
+;;	    ("C-x 4 C-o" . switch-window-then-find-file-read-only)
+;;	    ("C-x 4 C-f" . switch-window-then-find-file)
+;;	    ("C-x 4 C-o" . switch-window-then-display-buffer)
+;;	    ("C-x 4 0" . switch-window-then-kill-buffer)))
  #+END_SRC 
 
 
@@ -383,14 +482,12 @@ Version 2019-02-26"
 
  #+END_SRC
 
-
 ** Ivy-bibtex
 #+BEGIN_SRC emacs-lisp
 
 
 
 #+END_SRC
-
 
 ** Pdf-tools
 
@@ -403,27 +500,25 @@ Version 2019-02-26"
 
 #+END_SRC
 
-
-
-
-
 ** Org-agenda
+
+Commented out last part is for recusrively working through a directory.  This clashed with dashboard and recentf, as these files were being opened at startup.  One will do. 
+
 
 #+BEGIN_SRC emacs-lisp
 
 
-(setq org-agenda-files (apply 'append
-			      (mapcar
-			       (lambda (directory)
-				 (directory-files-recursively
-				  directory org-agenda-file-regexp))
-			       '("~/work/"))))
 
-(define-key global-map "\C-ca" 'org-agenda)
-(setq org-log-done t)
+   (setq org-agenda-files (apply 'append
+				(mapcar
+				 (lambda (directory)
+				   (directory-files-recursively
+				    directory org-agenda-file-regexp))
+				 '("~/work/agenda/"))))
+    (define-key global-map "\C-ca" 'org-agenda)
+   (setq org-log-done t)
 
 #+END_SRC
-
 
 ** Org-Super-Agenda
  #+BEGIN_SRC emacs-lisp
@@ -436,7 +531,6 @@ Version 2019-02-26"
 				  :tag "shop"))))
  #+END_SRC
 
-
 ** Org-Journal
 
 #+BEGIN_SRC emacs-lisp
@@ -448,81 +542,190 @@ Version 2019-02-26"
 
 #+END_SRC
 
+** Switch-window Quick
 
-
-* Org-Ref
 #+BEGIN_SRC emacs-lisp
 
-;;  ;;(setq org-ref-completion-library 'org-ref-ivy-cite)
-;;  (require 'org-ref)
-;;
-;;  (setq org-ref-completion-library 'org-ref-ivy-cite)
-;;  (setq reftex-default-bibliography '("~/org-ref-test/bibs/bib1.bib"))
-;;
-;;  ;; see org-ref for use of these variables
-;;  (setq org-ref-bibliography-notes "~/org-ref-test/notes/notes.org"
-;;	org-ref-default-bibliography '("~/org-ref-test/bibs/bib1.bib")
-;;	org-ref-pdf-directory "~/org-ref-test/pdfs/")
+  (defun quick-switch-window ()
+     (interactive)
+    (switch-window))
+  (global-set-key (kbd "C-?") 'quick-switch-window)
 
 
+  (setq switch-window-shortcut-style 'qwerty)
+#+END_SRC
 
-;;  (setq org-ref-insert-cite-key "C-c ]")
-;;
-;;  (defun harvard-cite (key page)
-;;    (interactive (list (completing-read "Cite: " (orhc-bibtex-candidates))
-;;	       (read-string "Page: "))))
+** Centaur-tabs
+
+#+BEGIN_SRC emacs-lisp
+
+  (use-package centaur-tabs
+    :ensure t
+    :demand
+    :config
+    (centaur-tabs-mode t)
+    :bind
+    ("M-n" . centaur-tabs-backward)
+    ("M-p" . centaur-tabs-forward))
 
 
+  (setq centaur-tabs-set-icons t)
+  (setq centaur-tabs-plain-icons t)
+#+END_SRC
+
+** All the Icons
+
+#+BEGIN_SRC emacs-lisp
+
+  (use-package all-the-icons)
 
 
+#+END_SRC
+** Treemacs
+#+BEGIN_SRC emacs-lisp
 
+(use-package treemacs
+  :ensure t
+  :defer t
+  :init
+  (with-eval-after-load 'winum
+    (define-key winum-keymap (kbd "M-0") #'treemacs-select-window))
+  :config
+  (progn
+    (setq treemacs-collapse-dirs                 (if treemacs-python-executable 3 0)
+          treemacs-deferred-git-apply-delay      0.5
+          treemacs-directory-name-transformer    #'identity
+          treemacs-display-in-side-window        t
+          treemacs-eldoc-display                 t
+          treemacs-file-event-delay              5000
+          treemacs-file-extension-regex          treemacs-last-period-regex-value
+          treemacs-file-follow-delay             0.2
+          treemacs-file-name-transformer         #'identity
+          treemacs-follow-after-init             t
+          treemacs-git-command-pipe              ""
+          treemacs-goto-tag-strategy             'refetch-index
+          treemacs-indentation                   2
+          treemacs-indentation-string            " "
+          treemacs-is-never-other-window         t
+          treemacs-max-git-entries               5000
+          treemacs-missing-project-action        'ask
+          treemacs-move-forward-on-expand        nil
+          treemacs-no-png-images                 nil
+          treemacs-no-delete-other-windows       t
+          treemacs-project-follow-cleanup        nil
+          treemacs-persist-file                  (expand-file-name ".cache/treemacs-persist" user-emacs-directory)
+          treemacs-position                      'left
+          treemacs-recenter-distance             0.1
+          treemacs-recenter-after-file-follow    nil
+          treemacs-recenter-after-tag-follow     nil
+          treemacs-recenter-after-project-jump   'always
+          treemacs-recenter-after-project-expand 'on-distance
+          treemacs-show-cursor                   nil
+          treemacs-show-hidden-files             t
+          treemacs-silent-filewatch              nil
+          treemacs-silent-refresh                nil
+          treemacs-sorting                       'alphabetic-asc
+          treemacs-space-between-root-nodes      t
+          treemacs-tag-follow-cleanup            t
+          treemacs-tag-follow-delay              1.5
+          treemacs-user-mode-line-format         nil
+          treemacs-user-header-line-format       nil
+          treemacs-width                         35)
+
+    ;; The default width and height of the icons is 22 pixels. If you are
+    ;; using a Hi-DPI display, uncomment this to double the icon size.
+    ;;(treemacs-resize-icons 44)
+
+    (treemacs-follow-mode t)
+    (treemacs-filewatch-mode t)
+    (treemacs-fringe-indicator-mode t)
+    (pcase (cons (not (null (executable-find "git")))
+                 (not (null treemacs-python-executable)))
+      (`(t . t)
+       (treemacs-git-mode 'deferred))
+      (`(t . _)
+       (treemacs-git-mode 'simple))))
+  :bind
+  (:map global-map
+        ("M-0"       . treemacs-select-window)
+        ("C-x t 1"   . treemacs-delete-other-windows)
+        ("C-x t t"   . treemacs)
+        ("C-x t B"   . treemacs-bookmark)
+        ("C-x t C-t" . treemacs-find-file)
+        ("C-x t M-t" . treemacs-find-tag)))
+
+(use-package treemacs-evil
+  :after treemacs evil
+  :ensure t)
+
+(use-package treemacs-projectile
+  :after treemacs projectile
+  :ensure t)
+
+(use-package treemacs-icons-dired
+  :after treemacs dired
+  :ensure t
+  :config (treemacs-icons-dired-mode))
+
+(use-package treemacs-magit
+  :after treemacs magit
+  :ensure t)
+
+(use-package treemacs-persp ;;treemacs-persective if you use perspective.el vs. persp-mode
+  :after treemacs persp-mode ;;or perspective vs. persp-mode
+  :ensure t
+  :config (treemacs-set-scope-type 'Perspectives))
+
+#+END_SRC
+** projectile
+*** Main
+ #+BEGIN_SRC emacs-lisp
+
+     (use-package projectile
+       :ensure t
+       :config
+       (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+       (projectile-mode +1)
+       (setq projectile-completion-system 'ivy)
+   )
+ #+END_SRC
+*** Counsel Projectile
+
+
+#+BEGIN_SRC emacs-lisp
+  (counsel-projectile-mode t)
+#+END_SRC
+** Windmove
+#+BEGIN_SRC emacs-lisp
+;;(windmove-default-keybindings 'meta)
+
+(when (fboundp 'windmove-default-keybindings)
+  (windmove-default-keybindings))
 
 #+END_SRC
 
 
-** Reftex
+
+
 
 #+BEGIN_SRC emacs-lisp
-(setq bibtex-completion-bibliography
-      '("~/org-ref-test/bibs/Testing2.bib"
-        ))
 
-
-(setq bibtex-completion-format-citation-functions
-  '((org-mode      . bibtex-completion-format-citation-pandoc-citeproc)
-    (latex-mode    . bibtex-completion-format-citation-cite)
-    (markdown-mode . bibtex-completion-format-citation-pandoc-citeproc)
-    (default       . bibtex-completion-format-citation-default)))
-
-
-
-(setq ivy-bibtex-default-action 'ivy-bibtex-insert-citation)
-
-(global-set-key (kbd "C-c i") 'ivy-bibtex)
-
-(setq bibtex-completion-pdf-field "File")
-
-
-(defun bibtex-completion-open-pdf-of-entry-at-point ()
-  (interactive)
-  (save-excursion
-    (bibtex-beginning-of-entry)
-    (when (looking-at bibtex-entry-maybe-empty-head)
-      (bibtex-completion-open-pdf (bibtex-key-in-head)))))
-
-
-(defun my/print-reference-title ()
-  "Print the title to the reference at point in the minibuffer."
-  (interactive)
-  (message
-   (assoc-default "title"
-                  (bibtex-completion-get-entry
-                   (org-ref-get-bibtex-key-under-cursor)))))
-
+(global-set-key (kbd "M-p") 'switch-window)
 
 #+END_SRC
 
 
+
+** Ace-window
+#+BEGIN_SRC emacs-lisp
+
+  (use-package ace-window
+    :ensure t)
+
+(global-set-key (kbd "M-o") 'ace-window)
+
+
+#+END_SRC
 
 
 
