@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-07-13 Mon 23:00 -->
+<!-- 2020-07-14 Tue 23:47 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Emacs Config</title>
@@ -234,175 +234,165 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgab2f1f3">1. Setup</a>
+<li><a href="#org8c44e55">1. Setup</a>
 <ul>
-<li><a href="#org9d57ab5">1.1. Configure package sources</a>
+<li><a href="#org93d197d">1.1. Configure package sources</a>
 <ul>
-<li><a href="#orgb865fd4">1.1.1. Use Package</a></li>
+<li><a href="#orgee1fc45">1.1.1. Require Package</a></li>
+<li><a href="#orgfebe9e3">1.1.2. Use Package</a></li>
 </ul>
 </li>
-<li><a href="#orga4e3996">1.2. Appearence</a>
+<li><a href="#org2c7310a">1.2. Appearence</a>
 <ul>
-<li><a href="#org01f126f">1.2.1. Set theme to dracula.</a></li>
-<li><a href="#org3c3f74f">1.2.2. Disable splash screen.</a></li>
-<li><a href="#org148f468">1.2.3. Turn off menu bar and tool bar.</a></li>
-<li><a href="#org32c58ad">1.2.4. Add in dashboard</a></li>
-<li><a href="#org24dab0d">1.2.5. Doom</a></li>
+<li><a href="#org9b12191">1.2.1. Turn off menu bar and tool bar.</a></li>
+<li><a href="#org9f60cc4">1.2.2. Add in dashboard</a></li>
+<li><a href="#org5090381">1.2.3. Doom Themes</a></li>
+<li><a href="#org55c67f4">1.2.4. Disable splash screen.</a></li>
+<li><a href="#org364fa6d">1.2.5. All the Icons</a></li>
 </ul>
 </li>
-<li><a href="#orgb4f2ea0">1.3. Key Bindings</a>
+<li><a href="#org80f4a1f">1.3. Key Bindings</a>
 <ul>
-<li><a href="#org7523a90">1.3.1. General bindings - to sort</a></li>
-<li><a href="#org555fff9">1.3.2. Kill other buffer.</a></li>
-<li><a href="#org8aaa9e6">1.3.3. Kill all buffers matching string, no prompt</a></li>
-<li><a href="#org5ceeaf1">1.3.4. Delete shortcuts</a></li>
-<li><a href="#org36eb585">1.3.5. Comment out</a></li>
-<li><a href="#org8d434e8">1.3.6. Rebind org-agenda-files</a></li>
-<li><a href="#orgacb27d1">1.3.7. Windmove</a></li>
+<li><a href="#orgdd58088">1.3.1. General bindings - to sort</a></li>
+<li><a href="#org499cbfd">1.3.2. Kill other buffer.</a></li>
+<li><a href="#orgd851efc">1.3.3. Kill all buffers matching string, no prompt</a></li>
+<li><a href="#org1e59973">1.3.4. Delete shortcuts</a></li>
+<li><a href="#org7b45588">1.3.5. Comment out</a></li>
+<li><a href="#org4db1fa3">1.3.6. Rebind org-agenda-files</a></li>
+<li><a href="#orgca56e76">1.3.7. Windmove</a></li>
 </ul>
 </li>
+<li><a href="#orgdcf865e">1.4. Navigation</a>
+<ul>
+<li><a href="#orge44acfb">1.4.1. Open-file-fast</a></li>
+<li><a href="#org3294b2b">1.4.2. Treemacs</a></li>
+<li><a href="#org744f03d">1.4.3. Windmove</a></li>
+<li><a href="#org0a25c83">1.4.4. <span class="todo TODO">TODO</span> Ace-window</a></li>
 </ul>
 </li>
-<li><a href="#org982ee25">2. Writing</a>
+<li><a href="#org5e1d422">1.5. Registers</a>
 <ul>
-<li><a href="#org753e969">2.1. Dubcaps mode.</a></li>
-<li><a href="#orgc68a0a1">2.2. Flyspell</a></li>
-</ul>
-</li>
-<li><a href="#org088ddaf">3. Pandoc</a>
-<ul>
-<li><a href="#org74fdd5d">3.1. Pandoc-mode</a></li>
-</ul>
-</li>
-<li><a href="#org42a62d6">4. Org-mode</a>
-<ul>
-<li><a href="#org57c466f">4.1. Required</a></li>
-<li><a href="#org0e57767">4.2. Org-babel</a></li>
-<li><a href="#orgc862329">4.3. Org-Ref</a>
-<ul>
-<li><a href="#orgee64763">4.3.1. Reftex</a></li>
+<li><a href="#orgf9c7528">1.5.1. File Registers</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org54e4be8">5. Registers</a></li>
-<li><a href="#orgf3d48c9">6. Yasnippets</a></li>
-<li><a href="#org83b2cff">7. Shell</a></li>
-<li><a href="#orgebde924">8. Environments</a>
+<li><a href="#org0ab58b3">2. Writing</a>
 <ul>
-<li><a href="#org37ae759">8.1. Python</a>
+<li><a href="#org6a5b8aa">2.1. Spelling and Grammar</a>
 <ul>
-<li><a href="#orgd787c6c">8.1.1. Elpy</a></li>
+<li><a href="#org454ca95">2.1.1. Dubcaps mode.</a></li>
+<li><a href="#org19660b2">2.1.2. Flyspell</a></li>
+</ul>
+</li>
+<li><a href="#org6f997c3">2.2. Citations</a>
+<ul>
+<li><a href="#org2c72b2d">2.2.1. Reftex</a></li>
+</ul>
+</li>
+<li><a href="#org1a1250e">2.3. Templating</a>
+<ul>
+<li><a href="#orgde60d01">2.3.1. Yasnippets</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org85a8af2">9. Testing</a>
+<li><a href="#orgd7d2aaa">3. Major modes</a>
 <ul>
-<li><a href="#org4250497">9.1. Open-file-fast</a></li>
-<li><a href="#org729d92e">9.2. Ivy, Counsel, Swiper</a></li>
-<li><a href="#orgf5f7788">9.3. Switch Window</a></li>
-<li><a href="#orgb2d2370">9.4. Ivy-bibtex</a></li>
-<li><a href="#org59ae91d">9.5. Pdf-tools</a></li>
-<li><a href="#org0e80676">9.6. Org-agenda</a></li>
-<li><a href="#org470a75e">9.7. Org-Super-Agenda</a></li>
-<li><a href="#org79a9d3b">9.8. Org-Journal</a></li>
-<li><a href="#orgaa67981">9.9. Switch-window Quick</a></li>
-<li><a href="#org112f22e">9.10. Centaur-tabs</a></li>
-<li><a href="#org33c8410">9.11. All the Icons</a></li>
-<li><a href="#org9dee838">9.12. Treemacs</a></li>
-<li><a href="#org992f146">9.13. projectile</a>
+<li><a href="#org95d0b9d">3.1. Org-mode</a>
 <ul>
-<li><a href="#org8342e6e">9.13.1. Main</a></li>
-<li><a href="#orgc4a561b">9.13.2. Counsel Projectile</a></li>
+<li><a href="#org93336b7">3.1.1. Required</a></li>
+<li><a href="#org8f54e1b">3.1.2. Org-babel</a></li>
+<li><a href="#org1bd9b4f">3.1.3. Tweaks</a></li>
+<li><a href="#org4d6d0d3">3.1.4. Org-Journal</a></li>
+<li><a href="#org0229281">3.1.5. Org-Super-Agenda</a></li>
+<li><a href="#orgac56b45">3.1.6. Org-agenda</a></li>
 </ul>
 </li>
-<li><a href="#orgcea1125">9.14. Windmove</a></li>
-<li><a href="#orgd1de575">9.15. Ace-window</a></li>
+<li><a href="#orgb837e51">3.2. Environments</a>
+<ul>
+<li><a href="#orgd633e5e">3.2.1. Python</a></li>
+</ul>
+</li>
+<li><a href="#orgf792a7b">3.3. Shell</a>
+<ul>
+<li><a href="#org5d19a3c">3.3.1. Open Shell</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgb66fa19">4. Minor Modes/Tools</a>
+<ul>
+<li><a href="#orgeb5a3f3">4.1. Ivy, Counsel, Swiper</a>
+<ul>
+<li><a href="#org6557578">4.1.1. Counsel</a></li>
+<li><a href="#orgbdf241f">4.1.2. Ivy</a></li>
+<li><a href="#org597bfa7">4.1.3. Swiper</a></li>
+</ul>
+</li>
+<li><a href="#org2ccda61">4.2. Pdf-tools</a></li>
+<li><a href="#org710d38b">4.3. Centaur-tabs</a></li>
+<li><a href="#org2d3626d">4.4. projectile</a>
+<ul>
+<li><a href="#org7ba51db">4.4.1. Main</a></li>
+<li><a href="#org9021dca">4.4.2. Counsel Projectile</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org8c3922e">5. Testing</a>
+<ul>
+<li><a href="#org76747ec">5.1. Switch Window</a></li>
+<li><a href="#orga8d166a">5.2. Switch-window Quick</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgab2f1f3" class="outline-2">
-<h2 id="orgab2f1f3"><span class="section-number-2">1</span> Setup</h2>
+<div id="outline-container-org8c44e55" class="outline-2">
+<h2 id="org8c44e55"><span class="section-number-2">1</span> Setup</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org9d57ab5" class="outline-3">
-<h3 id="org9d57ab5"><span class="section-number-3">1.1</span> Configure package sources</h3>
+<div id="outline-container-org93d197d" class="outline-3">
+<h3 id="org93d197d"><span class="section-number-3">1.1</span> Configure package sources</h3>
 <div class="outline-text-3" id="text-1-1">
-<p>
-Add Melpa. 
-</p>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">
-(<span style="color: #51afef;">require</span> '<span style="color: #a991f1;">package</span>)
-(<span style="color: #51afef;">let*</span> ((no-ssl (<span style="color: #51afef;">and</span> (memq system-type '(windows-nt ms-dos))
-                    (not (gnutls-available-p))))
-       (proto (<span style="color: #51afef;">if</span> no-ssl <span style="color: #7bc275;">"http"</span> <span style="color: #7bc275;">"https"</span>)))
-  (<span style="color: #51afef;">when</span> no-ssl (<span style="color: #FCCE7B;">warn</span> <span style="color: #7bc275;">"\</span>
-<span style="color: #7bc275;">Your version of Emacs does not support SSL connections,</span>
-<span style="color: #7bc275;">which is unsafe because it allows man-in-the-middle attacks.</span>
-<span style="color: #7bc275;">There are two things you can do about this warning:</span>
-<span style="color: #7bc275;">1. Install an Emacs version that does support SSL and be safe.</span>
-<span style="color: #7bc275;">2. Remove this warning from your init file so you won't see it again."</span>))
-  (add-to-list 'package-archives (cons <span style="color: #7bc275;">"melpa"</span> (concat proto <span style="color: #7bc275;">"://melpa.org/packages/"</span>)) t)
-  <span style="color: #62686E;">;; </span><span style="color: #62686E;">Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`</span>
-  <span style="color: #62686E;">;; </span><span style="color: #62686E;">and `package-pinned-packages`. Most users will not need or want to do this.</span>
-  <span style="color: #62686E;">;;</span><span style="color: #62686E;">(add-to-list 'package-archives (cons "melpa-stable" (concat proto "://stable.melpa.org/packages/")) t)</span>
-  )
-(package-initialize)
-
-</pre>
 </div>
-</div>
-
-<div id="outline-container-orgb865fd4" class="outline-4">
-<h4 id="orgb865fd4"><span class="section-number-4">1.1.1</span> Use Package</h4>
+<div id="outline-container-orgee1fc45" class="outline-4">
+<h4 id="orgee1fc45"><span class="section-number-4">1.1.1</span> Require Package</h4>
 <div class="outline-text-4" id="text-1-1-1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
-
-
-
+(<span style="color: #51afef;">require</span> '<span style="color: #a991f1;">package</span>)
+(<span style="color: #51afef;">setq</span> package-archives
+      '((<span style="color: #7bc275;">"melpa"</span> . <span style="color: #7bc275;">"https://melpa.org/packages/"</span>)
+        (<span style="color: #7bc275;">"gnu"</span> . <span style="color: #7bc275;">"https://elpa.gnu.org/packages/"</span>)
+        (<span style="color: #7bc275;">"org"</span> . <span style="color: #7bc275;">"http://orgmode.org/elpa/"</span>)))
+(package-initialize)
 </pre>
 </div>
 </div>
 </div>
-</div>
-<div id="outline-container-orga4e3996" class="outline-3">
-<h3 id="orga4e3996"><span class="section-number-3">1.2</span> Appearence</h3>
-<div class="outline-text-3" id="text-1-2">
-</div>
-<div id="outline-container-org01f126f" class="outline-4">
-<h4 id="org01f126f"><span class="section-number-4">1.2.1</span> Set theme to dracula.</h4>
-<div class="outline-text-4" id="text-1-2-1">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"><span style="color: #62686E;">;; </span><span style="color: #62686E;">(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")</span>
-<span style="color: #62686E;">;; </span><span style="color: #62686E;">(load-theme 'dracula t)</span>
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-org3c3f74f" class="outline-4">
-<h4 id="org3c3f74f"><span class="section-number-4">1.2.2</span> Disable splash screen.</h4>
-<div class="outline-text-4" id="text-1-2-2">
-<p>
-Does what is says on the tin.  Allows the Dashboard to be loaded. 
-</p>
 
+<div id="outline-container-orgfebe9e3" class="outline-4">
+<h4 id="orgfebe9e3"><span class="section-number-4">1.1.2</span> Use Package</h4>
+<div class="outline-text-4" id="text-1-1-2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
-(<span style="color: #51afef;">setq</span> inhibit-splash-screen t)
+
+
 
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org148f468" class="outline-4">
-<h4 id="org148f468"><span class="section-number-4">1.2.3</span> Turn off menu bar and tool bar.</h4>
-<div class="outline-text-4" id="text-1-2-3">
+</div>
+<div id="outline-container-org2c7310a" class="outline-3">
+<h3 id="org2c7310a"><span class="section-number-3">1.2</span> Appearence</h3>
+<div class="outline-text-3" id="text-1-2">
+</div>
+<div id="outline-container-org9b12191" class="outline-4">
+<h4 id="org9b12191"><span class="section-number-4">1.2.1</span> Turn off menu bar and tool bar.</h4>
+<div class="outline-text-4" id="text-1-2-1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(menu-bar-mode -1)
 (tool-bar-mode -1) 
@@ -411,42 +401,33 @@ Does what is says on the tin.  Allows the Dashboard to be loaded.
 </div>
 </div>
 </div>
-<div id="outline-container-org32c58ad" class="outline-4">
-<h4 id="org32c58ad"><span class="section-number-4">1.2.4</span> Add in dashboard</h4>
-<div class="outline-text-4" id="text-1-2-4">
-<p>
-This sets up the dashboard.
-</p>
-
+<div id="outline-container-org9f60cc4" class="outline-4">
+<h4 id="org9f60cc4"><span class="section-number-4">1.2.2</span> Add in dashboard</h4>
+<div class="outline-text-4" id="text-1-2-2">
 <div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #51afef;">require</span> '<span style="color: #a991f1;">dashboard</span>)
-(dashboard-setup-startup-hook)
-(<span style="color: #51afef;">setq</span> dashboard-center-content t)
-
-
-<span style="color: #62686E;">;;   </span><span style="color: #62686E;">(defun dashboard-insert-custom (list-size)</span>
-<span style="color: #62686E;">;;     </span><span style="color: #62686E;">(insert "Custom text"))</span>
-<span style="color: #62686E;">;;   </span><span style="color: #62686E;">(add-to-list 'dashboard-item-generators  '(custom . dashboard-insert-custom))</span>
-<span style="color: #62686E;">;;   </span><span style="color: #62686E;">(add-to-list 'dashboard-items '(custom) t)</span>
-<span style="color: #62686E;">;;</span>
-<span style="color: #62686E;">;;</span>
-<span style="color: #62686E;">;;</span>
-<span style="color: #62686E;">;;   </span><span style="color: #62686E;">(setq dashboard-items '((recents  . 0)</span>
-<span style="color: #62686E;">;;</span><span style="color: #62686E;">                         (bookmarks . 0)</span>
-<span style="color: #62686E;">;;</span><span style="color: #62686E;">                         (projects . 0)</span>
-<span style="color: #62686E;">;;</span><span style="color: #62686E;">                         (agenda . 0)</span>
-<span style="color: #62686E;">;;</span><span style="color: #62686E;">                         (registers . 0)))</span>
+<pre class="src src-emacs-lisp">(<span style="color: #51afef;">use-package</span> <span style="color: #a991f1;">dashboard</span>
+  <span style="color: #C57BDB;">:ensure</span> t
+  <span style="color: #C57BDB;">:config</span>
+  (<span style="color: #51afef;">setq</span> dashboard-items '((recents . 10)
+                          (bookmarks . 10)
+                          (agenda . 10))
+        dashboard-center-content t
+        dashboard-startup-banner 4
+        dashboard-show-shortcuts nil
+        dashboard-set-footer nil
+        dashboard-init-info <span style="color: #7bc275;">""</span>)        
+  (dashboard-setup-startup-hook)
+  )
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org24dab0d" class="outline-4">
-<h4 id="org24dab0d"><span class="section-number-4">1.2.5</span> Doom</h4>
-<div class="outline-text-4" id="text-1-2-5">
+<div id="outline-container-org5090381" class="outline-4">
+<h4 id="org5090381"><span class="section-number-4">1.2.3</span> Doom Themes</h4>
+<div class="outline-text-4" id="text-1-2-3">
 <p>
 Doom themes.  Various options disabled for the time being.
 </p>
-
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">(<span style="color: #51afef;">use-package</span> <span style="color: #a991f1;">doom-themes</span>
   <span style="color: #C57BDB;">:ensure</span> t  
@@ -464,22 +445,48 @@ Doom themes.  Various options disabled for the time being.
 <span style="color: #62686E;">;;</span><span style="color: #62686E;">(doom-themes-neotree-config)</span>
 <span style="color: #62686E;">;; </span><span style="color: #62686E;">or for treemacs users</span>
 <span style="color: #62686E;">;; </span><span style="color: #62686E;">(setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme</span>
-<span style="color: #62686E;">;; </span><span style="color: #62686E;">(doom-themes-treemacs-config)</span>
+ (doom-themes-treemacs-config)
 
-<span style="color: #62686E;">;; </span><span style="color: #62686E;">Corrects (and improves) org-mode's native fontification.</span>
-<span style="color: #62686E;">;;</span><span style="color: #62686E;">(doom-themes-org-config))</span>
+
+
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org55c67f4" class="outline-4">
+<h4 id="org55c67f4"><span class="section-number-4">1.2.4</span> Disable splash screen.</h4>
+<div class="outline-text-4" id="text-1-2-4">
+<p>
+Does what is says on the tin.  Allows the Dashboard to be loaded. 
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">
+(<span style="color: #51afef;">setq</span> inhibit-splash-screen t)
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org364fa6d" class="outline-4">
+<h4 id="org364fa6d"><span class="section-number-4">1.2.5</span> All the Icons</h4>
+<div class="outline-text-4" id="text-1-2-5">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">
+(<span style="color: #51afef;">use-package</span> <span style="color: #a991f1;">all-the-icons</span>)
+
 
 </pre>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-orgb4f2ea0" class="outline-3">
-<h3 id="orgb4f2ea0"><span class="section-number-3">1.3</span> Key Bindings</h3>
+<div id="outline-container-org80f4a1f" class="outline-3">
+<h3 id="org80f4a1f"><span class="section-number-3">1.3</span> Key Bindings</h3>
 <div class="outline-text-3" id="text-1-3">
 </div>
-<div id="outline-container-org7523a90" class="outline-4">
-<h4 id="org7523a90"><span class="section-number-4">1.3.1</span> General bindings - to sort</h4>
+<div id="outline-container-orgdd58088" class="outline-4">
+<h4 id="orgdd58088"><span class="section-number-4">1.3.1</span> General bindings - to sort</h4>
 <div class="outline-text-4" id="text-1-3-1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
@@ -493,8 +500,8 @@ Doom themes.  Various options disabled for the time being.
 </div>
 </div>
 
-<div id="outline-container-org555fff9" class="outline-4">
-<h4 id="org555fff9"><span class="section-number-4">1.3.2</span> Kill other buffer.</h4>
+<div id="outline-container-org499cbfd" class="outline-4">
+<h4 id="org499cbfd"><span class="section-number-4">1.3.2</span> Kill other buffer.</h4>
 <div class="outline-text-4" id="text-1-3-2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
@@ -517,8 +524,8 @@ Doom themes.  Various options disabled for the time being.
 </div>
 </div>
 
-<div id="outline-container-org8aaa9e6" class="outline-4">
-<h4 id="org8aaa9e6"><span class="section-number-4">1.3.3</span> Kill all buffers matching string, no prompt</h4>
+<div id="outline-container-orgd851efc" class="outline-4">
+<h4 id="orgd851efc"><span class="section-number-4">1.3.3</span> Kill all buffers matching string, no prompt</h4>
 <div class="outline-text-4" id="text-1-3-3">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
@@ -541,8 +548,8 @@ Doom themes.  Various options disabled for the time being.
 </div>
 </div>
 
-<div id="outline-container-org5ceeaf1" class="outline-4">
-<h4 id="org5ceeaf1"><span class="section-number-4">1.3.4</span> Delete shortcuts</h4>
+<div id="outline-container-org1e59973" class="outline-4">
+<h4 id="org1e59973"><span class="section-number-4">1.3.4</span> Delete shortcuts</h4>
 <div class="outline-text-4" id="text-1-3-4">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
@@ -554,12 +561,12 @@ Doom themes.  Various options disabled for the time being.
 </div>
 </div>
 
-<div id="outline-container-org36eb585" class="outline-4">
-<h4 id="org36eb585"><span class="section-number-4">1.3.5</span> Comment out</h4>
+<div id="outline-container-org7b45588" class="outline-4">
+<h4 id="org7b45588"><span class="section-number-4">1.3.5</span> Comment out</h4>
 <div class="outline-text-4" id="text-1-3-5">
 </div>
 <ol class="org-ol">
-<li><a id="orgc4a0b3f"></a>Elisp<br />
+<li><a id="org6471d47"></a>Elisp<br />
 <div class="outline-text-5" id="text-1-3-5-1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
@@ -571,8 +578,8 @@ Doom themes.  Various options disabled for the time being.
 </li>
 </ol>
 </div>
-<div id="outline-container-org8d434e8" class="outline-4">
-<h4 id="org8d434e8"><span class="section-number-4">1.3.6</span> Rebind org-agenda-files</h4>
+<div id="outline-container-org4db1fa3" class="outline-4">
+<h4 id="org4db1fa3"><span class="section-number-4">1.3.6</span> Rebind org-agenda-files</h4>
 <div class="outline-text-4" id="text-1-3-6">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
@@ -581,8 +588,8 @@ Doom themes.  Various options disabled for the time being.
 </div>
 </div>
 </div>
-<div id="outline-container-orgacb27d1" class="outline-4">
-<h4 id="orgacb27d1"><span class="section-number-4">1.3.7</span> Windmove</h4>
+<div id="outline-container-orgca56e76" class="outline-4">
+<h4 id="orgca56e76"><span class="section-number-4">1.3.7</span> Windmove</h4>
 <div class="outline-text-4" id="text-1-3-7">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
@@ -596,290 +603,13 @@ Doom themes.  Various options disabled for the time being.
 </div>
 </div>
 </div>
+<div id="outline-container-orgdcf865e" class="outline-3">
+<h3 id="orgdcf865e"><span class="section-number-3">1.4</span> Navigation</h3>
+<div class="outline-text-3" id="text-1-4">
 </div>
-<div id="outline-container-org982ee25" class="outline-2">
-<h2 id="org982ee25"><span class="section-number-2">2</span> Writing</h2>
-<div class="outline-text-2" id="text-2">
-</div>
-<div id="outline-container-org753e969" class="outline-3">
-<h3 id="org753e969"><span class="section-number-3">2.1</span> Dubcaps mode.</h3>
-<div class="outline-text-3" id="text-2-1">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">
-(<span style="color: #51afef;">defun</span> <span style="color: #5cEfFF;">dcaps-to-scaps</span> ()
-  <span style="color: #7e7e87;">"Convert word in DOuble CApitals to Single Capitals."</span>
-  (<span style="color: #51afef;">interactive</span>)
-  (<span style="color: #51afef;">and</span> (= ?w (char-syntax (char-before)))
-       (<span style="color: #51afef;">save-excursion</span>
-         (<span style="color: #51afef;">and</span> (<span style="color: #51afef;">if</span> (called-interactively-p)
-                  (skip-syntax-backward <span style="color: #7bc275;">"w"</span>)
-                (= -3 (skip-syntax-backward <span style="color: #7bc275;">"w"</span>)))
-              (<span style="color: #51afef;">let</span> (case-fold-search)
-                (looking-at <span style="color: #7bc275;">"\\b[[:upper:]]\\{2\\}[[:lower:]]"</span>))
-              (capitalize-word 1)))))
-
-(add-hook 'post-self-insert-hook #'dcaps-to-scaps nil 'local)
-
-
-<span style="color: #62686E;">;; </span><span style="color: #62686E;">Dubcaps mode</span>
-
-(<span style="color: #51afef;">define-minor-mode</span> <span style="color: #5cEfFF;">dubcaps-mode</span>
-  <span style="color: #7e7e87;">"Toggle `</span><span style="color: #a991f1;">dubcaps-mode</span><span style="color: #7e7e87;">'.  Converts words in DOuble CApitals to</span>
-<span style="color: #7e7e87;">Single Capitals as you type."</span>
-  <span style="color: #C57BDB;">:init-value</span> nil
-  <span style="color: #C57BDB;">:lighter</span> (<span style="color: #7bc275;">" DC"</span>)
-  (<span style="color: #51afef;">if</span> dubcaps-mode
-      (add-hook 'post-self-insert-hook #'dcaps-to-scaps nil 'local)
-    (remove-hook 'post-self-insert-hook #'dcaps-to-scaps 'local)))
-
-(add-hook 'org-mode-hook 'dubcaps-mode)
-(add-hook 'markdown-mode-hook 'dubcaps-mode)
-
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-orgc68a0a1" class="outline-3">
-<h3 id="orgc68a0a1"><span class="section-number-3">2.2</span> Flyspell</h3>
-<div class="outline-text-3" id="text-2-2">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp"> (<span style="color: #51afef;">use-package</span> <span style="color: #a991f1;">flyspell-correct</span>
-   <span style="color: #C57BDB;">:ensure</span> t
-   <span style="color: #C57BDB;">:after</span> flyspell
-   <span style="color: #C57BDB;">:bind</span> (<span style="color: #C57BDB;">:map</span> flyspell-mode-map (<span style="color: #7bc275;">"C-'"</span> . flyspell-correct-wrapper)))
-
- (<span style="color: #51afef;">use-package</span> <span style="color: #a991f1;">flyspell-correct-ivy</span>
-  <span style="color: #C57BDB;">:ensure</span> t 
-  <span style="color: #C57BDB;">:after</span> flyspell-correct)
-
- <span style="color: #62686E;">;; </span><span style="color: #62686E;">Hook to org mode</span>
-<span style="color: #62686E;">;; </span><span style="color: #62686E;">(add-hook 'org-mode-hook 'flyspell-mode)</span>
-
-
-
-</pre>
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-org088ddaf" class="outline-2">
-<h2 id="org088ddaf"><span class="section-number-2">3</span> Pandoc</h2>
-<div class="outline-text-2" id="text-3">
-</div>
-<div id="outline-container-org74fdd5d" class="outline-3">
-<h3 id="org74fdd5d"><span class="section-number-3">3.1</span> Pandoc-mode</h3>
-<div class="outline-text-3" id="text-3-1">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">
-(add-hook 'org-mode-hook 'pandoc-mode)
-
-
-</pre>
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-org42a62d6" class="outline-2">
-<h2 id="org42a62d6"><span class="section-number-2">4</span> Org-mode</h2>
-<div class="outline-text-2" id="text-4">
-</div>
-<div id="outline-container-org57c466f" class="outline-3">
-<h3 id="org57c466f"><span class="section-number-3">4.1</span> Required</h3>
-<div class="outline-text-3" id="text-4-1">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">
-(eval-after-load <span style="color: #7bc275;">"org"</span>
-  '(<span style="color: #51afef;">require</span> '<span style="color: #a991f1;">ox-md</span> nil t))
-
-</pre>
-</div>
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">
-(add-hook 'org-mode-hook 'pandoc-mode)
-
-(<span style="color: #51afef;">setq</span> org-pandoc-options-for-latex-pdf '((pdf-engine . <span style="color: #7bc275;">"pdflatex"</span>)))
-
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-org0e57767" class="outline-3">
-<h3 id="org0e57767"><span class="section-number-3">4.2</span> Org-babel</h3>
-<div class="outline-text-3" id="text-4-2">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((python . t)))
-
-<span style="color: #62686E;">;;</span><span style="color: #62686E;">(setq org-confirm-babel-evaluate nil) </span>
-
-
-(<span style="color: #51afef;">setq</span> org-babel-python-command <span style="color: #7bc275;">"python3"</span>)
-
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgc862329" class="outline-3">
-<h3 id="orgc862329"><span class="section-number-3">4.3</span> Org-Ref</h3>
-<div class="outline-text-3" id="text-4-3">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">
-<span style="color: #62686E;">;;  </span><span style="color: #62686E;">;;(setq org-ref-completion-library 'org-ref-ivy-cite)</span>
-<span style="color: #62686E;">;;  </span><span style="color: #62686E;">(require 'org-ref)</span>
-<span style="color: #62686E;">;;</span>
-<span style="color: #62686E;">;;  </span><span style="color: #62686E;">(setq org-ref-completion-library 'org-ref-ivy-cite)</span>
-<span style="color: #62686E;">;;  </span><span style="color: #62686E;">(setq reftex-default-bibliography '("~/org-ref-test/bibs/bib1.bib"))</span>
-<span style="color: #62686E;">;;</span>
-<span style="color: #62686E;">;;  </span><span style="color: #62686E;">;; see org-ref for use of these variables</span>
-<span style="color: #62686E;">;;  </span><span style="color: #62686E;">(setq org-ref-bibliography-notes "~/org-ref-test/notes/notes.org"</span>
-<span style="color: #62686E;">;;</span><span style="color: #62686E;">      org-ref-default-bibliography '("~/org-ref-test/bibs/bib1.bib")</span>
-<span style="color: #62686E;">;;</span><span style="color: #62686E;">      org-ref-pdf-directory "~/org-ref-test/pdfs/")</span>
-
-
-
-<span style="color: #62686E;">;;  </span><span style="color: #62686E;">(setq org-ref-insert-cite-key "C-c ]")</span>
-<span style="color: #62686E;">;;</span>
-<span style="color: #62686E;">;;  </span><span style="color: #62686E;">(defun harvard-cite (key page)</span>
-<span style="color: #62686E;">;;    </span><span style="color: #62686E;">(interactive (list (completing-read "Cite: " (orhc-bibtex-candidates))</span>
-<span style="color: #62686E;">;;</span><span style="color: #62686E;">             (read-string "Page: "))))</span>
-
-
-
-
-
-
-</pre>
-</div>
-</div>
-
-
-<div id="outline-container-orgee64763" class="outline-4">
-<h4 id="orgee64763"><span class="section-number-4">4.3.1</span> Reftex</h4>
-<div class="outline-text-4" id="text-4-3-1">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #51afef;">setq</span> bibtex-completion-bibliography
-      '(<span style="color: #7bc275;">"~/org-ref-test/bibs/Testing2.bib"</span>
-        ))
-
-
-(<span style="color: #51afef;">setq</span> bibtex-completion-format-citation-functions
-  '((org-mode      . bibtex-completion-format-citation-pandoc-citeproc)
-    (latex-mode    . bibtex-completion-format-citation-cite)
-    (markdown-mode . bibtex-completion-format-citation-pandoc-citeproc)
-    (default       . bibtex-completion-format-citation-default)))
-
-
-
-(<span style="color: #51afef;">setq</span> ivy-bibtex-default-action 'ivy-bibtex-insert-citation)
-
-(global-set-key (kbd <span style="color: #7bc275;">"C-c i"</span>) 'ivy-bibtex)
-
-(<span style="color: #51afef;">setq</span> bibtex-completion-pdf-field <span style="color: #7bc275;">"File"</span>)
-
-
-(<span style="color: #51afef;">defun</span> <span style="color: #5cEfFF;">bibtex-completion-open-pdf-of-entry-at-point</span> ()
-  (<span style="color: #51afef;">interactive</span>)
-  (<span style="color: #51afef;">save-excursion</span>
-    (bibtex-beginning-of-entry)
-    (<span style="color: #51afef;">when</span> (looking-at bibtex-entry-maybe-empty-head)
-      (bibtex-completion-open-pdf (bibtex-key-in-head)))))
-
-
-(<span style="color: #51afef;">defun</span> <span style="color: #5cEfFF;">my/print-reference-title</span> ()
-  <span style="color: #7e7e87;">"Print the title to the reference at point in the minibuffer."</span>
-  (<span style="color: #51afef;">interactive</span>)
-  (message
-   (assoc-default <span style="color: #7bc275;">"title"</span>
-                  (bibtex-completion-get-entry
-                   (org-ref-get-bibtex-key-under-cursor)))))
-
-
-</pre>
-</div>
-<p>
-.
-</p>
-
-
-<p>
-cq
-</p>
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-org54e4be8" class="outline-2">
-<h2 id="org54e4be8"><span class="section-number-2">5</span> Registers</h2>
-<div class="outline-text-2" id="text-5">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">(set-register ?s (cons 'file <span style="color: #7bc275;">"~/.emacs.d/settings.org"</span>))
-
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-orgf3d48c9" class="outline-2">
-<h2 id="orgf3d48c9"><span class="section-number-2">6</span> Yasnippets</h2>
-<div class="outline-text-2" id="text-6">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">
-(yas-global-mode 1)
-(global-set-key (kbd <span style="color: #7bc275;">"C-c 8"</span>) 'yas-insert-snippet)
-
-
-
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-org83b2cff" class="outline-2">
-<h2 id="org83b2cff"><span class="section-number-2">7</span> Shell</h2>
-<div class="outline-text-2" id="text-7">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">
-(global-set-key (kbd <span style="color: #7bc275;">"&lt;f7&gt;"</span>) 'shell)
-
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgebde924" class="outline-2">
-<h2 id="orgebde924"><span class="section-number-2">8</span> Environments</h2>
-<div class="outline-text-2" id="text-8">
-</div>
-<div id="outline-container-org37ae759" class="outline-3">
-<h3 id="org37ae759"><span class="section-number-3">8.1</span> Python</h3>
-<div class="outline-text-3" id="text-8-1">
-</div>
-<div id="outline-container-orgd787c6c" class="outline-4">
-<h4 id="orgd787c6c"><span class="section-number-4">8.1.1</span> Elpy</h4>
-<div class="outline-text-4" id="text-8-1-1">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">
-(<span style="color: #51afef;">use-package</span> <span style="color: #a991f1;">elpy</span>
-  <span style="color: #C57BDB;">:ensure</span> t
-  <span style="color: #C57BDB;">:init</span> (elpy-enable)
-  <span style="color: #C57BDB;">:config</span> (<span style="color: #51afef;">setq</span> elpy-rpc-python-command <span style="color: #7bc275;">"python3"</span>)
-  )
-
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-org85a8af2" class="outline-2">
-<h2 id="org85a8af2"><span class="section-number-2">9</span> Testing</h2>
-<div class="outline-text-2" id="text-9">
-</div>
-<div id="outline-container-org4250497" class="outline-3">
-<h3 id="org4250497"><span class="section-number-3">9.1</span> Open-file-fast</h3>
-<div class="outline-text-3" id="text-9-1">
+<div id="outline-container-orge44acfb" class="outline-4">
+<h4 id="orge44acfb"><span class="section-number-4">1.4.1</span> Open-file-fast</h4>
+<div class="outline-text-4" id="text-1-4-1">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
 (<span style="color: #51afef;">defun</span> <span style="color: #5cEfFF;">open-file-fast</span> ()
@@ -902,235 +632,9 @@ cq
 </div>
 </div>
 
-<div id="outline-container-org729d92e" class="outline-3">
-<h3 id="org729d92e"><span class="section-number-3">9.2</span> Ivy, Counsel, Swiper</h3>
-<div class="outline-text-3" id="text-9-2">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">(<span style="color: #51afef;">use-package</span> <span style="color: #a991f1;">counsel</span> <span style="color: #C57BDB;">:ensure</span> t
-  <span style="color: #C57BDB;">:after</span> ivy
-  <span style="color: #C57BDB;">:bind</span> ((<span style="color: #7bc275;">"M-x"</span> . 'counsel-M-x)
-         (<span style="color: #7bc275;">"C-x C-f"</span> . 'counsel-find-file)
-         (<span style="color: #7bc275;">"&lt;f1&gt; f"</span> . 'counsel-describe-function)
-         (<span style="color: #7bc275;">"&lt;f1&gt; v"</span> . 'counsel-describe-variable)
-         (<span style="color: #7bc275;">"&lt;f1&gt; o"</span> . 'counsel-describe-symbol)
-         (<span style="color: #7bc275;">"&lt;f1&gt; l"</span> . 'counsel-find-library)
-         (<span style="color: #7bc275;">"&lt;f2&gt; i"</span> . 'counsel-info-lookup-symbol)
-         (<span style="color: #7bc275;">"&lt;f2&gt; u"</span> . 'counsel-unicode-char)
-         (<span style="color: #7bc275;">"C-c g"</span> . 'counsel-git)
-         (<span style="color: #7bc275;">"C-c j"</span> . 'counsel-git-grep)
-         (<span style="color: #7bc275;">"C-c k"</span> . 'counsel-ag)
-         (<span style="color: #7bc275;">"C-S-o"</span> . 'counsel-rhythmbox)
-         <span style="color: #C57BDB;">:map</span> minibuffer-local-map (<span style="color: #7bc275;">"C-r"</span> . 'counsel-minibuffer-history)))
-
-(<span style="color: #51afef;">use-package</span> <span style="color: #a991f1;">ivy</span> <span style="color: #C57BDB;">:ensure</span> t
-  <span style="color: #C57BDB;">:init</span> (<span style="color: #51afef;">setq</span> ivy-use-virtual-buffers t
-  enable-recursive-minibuffers t)
- <span style="color: #C57BDB;">:demand</span>  <span style="color: #C57BDB;">:config</span> (ivy-mode 1)
- <span style="color: #C57BDB;">:bind</span> ((<span style="color: #7bc275;">"C-c C-r"</span> . ivy-resume)))
-
-(<span style="color: #51afef;">use-package</span> <span style="color: #a991f1;">swiper</span> <span style="color: #C57BDB;">:ensure</span> t
-  <span style="color: #C57BDB;">:after</span> ivy
-  <span style="color: #C57BDB;">:bind</span> ((<span style="color: #7bc275;">"C-s"</span> . swiper)
-         (<span style="color: #7bc275;">"C-r"</span> . swiper)))
-
-
-
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgf5f7788" class="outline-3">
-<h3 id="orgf5f7788"><span class="section-number-3">9.3</span> Switch Window</h3>
-<div class="outline-text-3" id="text-9-3">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">  <span style="color: #62686E;">;; </span><span style="color: #62686E;">(use-package switch-window</span>
-   <span style="color: #62686E;">;; </span><span style="color: #62686E;">:ensure t</span>
-   <span style="color: #62686E;">;; </span><span style="color: #62686E;">:bind (("C-x o" . switch-window)</span>
-<span style="color: #62686E;">;;</span><span style="color: #62686E;">          ("C-x 1" . switch-window-then-maximize)</span>
-<span style="color: #62686E;">;;</span><span style="color: #62686E;">          ("C-x 2" . switch-window-then-split-below)</span>
-<span style="color: #62686E;">;;</span><span style="color: #62686E;">          ("C-x 3" . switch-window-then-split-right)</span>
-<span style="color: #62686E;">;;</span><span style="color: #62686E;">          ("C-x 0" . switch-window-then-delete)</span>
-<span style="color: #62686E;">;;</span><span style="color: #62686E;">          ("C-x 4 d" . switch-window-then-dired)</span>
-<span style="color: #62686E;">;;</span><span style="color: #62686E;">          ("C-x 4 f" . switch-window-then-find-file)</span>
-<span style="color: #62686E;">;;</span><span style="color: #62686E;">          ("C-x 4 m" . switch-window-then-compose-mail)</span>
-<span style="color: #62686E;">;;</span><span style="color: #62686E;">          ("C-x 4 r" . switch-window-then-find-file-read-only)</span>
-<span style="color: #62686E;">;;</span><span style="color: #62686E;">          ("C-x 4 C-f" . switch-window-then-find-file)</span>
-<span style="color: #62686E;">;;</span><span style="color: #62686E;">          ("C-x 4 C-o" . switch-window-then-find-file-read-only)</span>
-<span style="color: #62686E;">;;</span><span style="color: #62686E;">          ("C-x 4 C-f" . switch-window-then-find-file)</span>
-<span style="color: #62686E;">;;</span><span style="color: #62686E;">          ("C-x 4 C-o" . switch-window-then-display-buffer)</span>
-<span style="color: #62686E;">;;</span><span style="color: #62686E;">          ("C-x 4 0" . switch-window-then-kill-buffer)))</span>
-</pre>
-</div>
-
-
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">
-(<span style="color: #51afef;">defvar</span> <span style="color: #DFDFDF;">org-blocks-hidden</span> nil)
-
-(<span style="color: #51afef;">defun</span> <span style="color: #5cEfFF;">org-toggle-blocks</span>
-()
-  (<span style="color: #51afef;">interactive</span>)
-  (<span style="color: #51afef;">if</span> org-blocks-hidden
-      (org-show-block-all)
-    (org-hide-block-all))
-  (<span style="color: #51afef;">setq-local</span> org-blocks-hidden (not org-blocks-hidden)))
-
-(add-hook 'org-mode-hook 'org-toggle-blocks)
-
-(define-key org-mode-map (kbd <span style="color: #7bc275;">"C-c t"</span>) 'org-toggle-blocks)
-</pre>
-</div>
-
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">
-(<span style="color: #51afef;">setq</span> org-src-tab-acts-natively t)
-
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgb2d2370" class="outline-3">
-<h3 id="orgb2d2370"><span class="section-number-3">9.4</span> Ivy-bibtex</h3>
-<div class="outline-text-3" id="text-9-4">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">
-
-
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org59ae91d" class="outline-3">
-<h3 id="org59ae91d"><span class="section-number-3">9.5</span> Pdf-tools</h3>
-<div class="outline-text-3" id="text-9-5">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">
-(<span style="color: #51afef;">use-package</span> <span style="color: #a991f1;">pdf-tools</span>
-  <span style="color: #C57BDB;">:ensure</span> t
-  <span style="color: #C57BDB;">:config</span> (pdf-tools-install))
-
-
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org0e80676" class="outline-3">
-<h3 id="org0e80676"><span class="section-number-3">9.6</span> Org-agenda</h3>
-<div class="outline-text-3" id="text-9-6">
-<p>
-Commented out last part is for recusrively working through a directory.  This clashed with dashboard and recentf, as these files were being opened at startup.  One will do. 
-</p>
-
-
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">
-
-
-(<span style="color: #51afef;">setq</span> org-agenda-files (apply 'append
-                             (mapcar
-                              (<span style="color: #51afef;">lambda</span> (directory)
-                                (directory-files-recursively
-                                 directory org-agenda-file-regexp))
-                              '(<span style="color: #7bc275;">"~/work/agenda/"</span>))))
- (define-key global-map <span style="color: #7bc275;">"\C-ca"</span> 'org-agenda)
-(<span style="color: #51afef;">setq</span> org-log-done t)
-
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org470a75e" class="outline-3">
-<h3 id="org470a75e"><span class="section-number-3">9.7</span> Org-Super-Agenda</h3>
-<div class="outline-text-3" id="text-9-7">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">
-(<span style="color: #51afef;">use-package</span> <span style="color: #a991f1;">org-super-agenda</span>
-  <span style="color: #C57BDB;">:ensure</span> t
-  <span style="color: #C57BDB;">:config</span>
- (<span style="color: #51afef;">setq</span> org-super-agenda-groups '(
-                           (<span style="color: #C57BDB;">:name</span> <span style="color: #7bc275;">"Waiting"</span>
-                               <span style="color: #C57BDB;">:tag</span> <span style="color: #7bc275;">"shop"</span>))))
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org79a9d3b" class="outline-3">
-<h3 id="org79a9d3b"><span class="section-number-3">9.8</span> Org-Journal</h3>
-<div class="outline-text-3" id="text-9-8">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">
-(<span style="color: #51afef;">use-package</span> <span style="color: #a991f1;">org-journal</span>
-  <span style="color: #C57BDB;">:ensure</span> t
-  <span style="color: #C57BDB;">:config</span>
-  (<span style="color: #51afef;">setq</span> org-journal-dir <span style="color: #7bc275;">"~/work/journal/"</span>))
-
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-orgaa67981" class="outline-3">
-<h3 id="orgaa67981"><span class="section-number-3">9.9</span> Switch-window Quick</h3>
-<div class="outline-text-3" id="text-9-9">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">
-(<span style="color: #51afef;">defun</span> <span style="color: #5cEfFF;">quick-switch-window</span> ()
-   (<span style="color: #51afef;">interactive</span>)
-  (switch-window))
-(global-set-key (kbd <span style="color: #7bc275;">"C-?"</span>) 'quick-switch-window)
-
-
-(<span style="color: #51afef;">setq</span> switch-window-shortcut-style 'qwerty)
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org112f22e" class="outline-3">
-<h3 id="org112f22e"><span class="section-number-3">9.10</span> Centaur-tabs</h3>
-<div class="outline-text-3" id="text-9-10">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">
-(<span style="color: #51afef;">use-package</span> <span style="color: #a991f1;">centaur-tabs</span>
-  <span style="color: #C57BDB;">:ensure</span> t
-  <span style="color: #C57BDB;">:demand</span>
-  <span style="color: #C57BDB;">:config</span>
-  (centaur-tabs-mode t)
-  <span style="color: #C57BDB;">:bind</span>
-  (<span style="color: #7bc275;">"M-n"</span> . centaur-tabs-backward)
-  (<span style="color: #7bc275;">"M-p"</span> . centaur-tabs-forward))
-
-
-(<span style="color: #51afef;">setq</span> centaur-tabs-set-icons t)
-(<span style="color: #51afef;">setq</span> centaur-tabs-plain-icons t)
-</pre>
-</div>
-</div>
-</div>
-
-<div id="outline-container-org33c8410" class="outline-3">
-<h3 id="org33c8410"><span class="section-number-3">9.11</span> All the Icons</h3>
-<div class="outline-text-3" id="text-9-11">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">
-(<span style="color: #51afef;">use-package</span> <span style="color: #a991f1;">all-the-icons</span>)
-
-
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-org9dee838" class="outline-3">
-<h3 id="org9dee838"><span class="section-number-3">9.12</span> Treemacs</h3>
-<div class="outline-text-3" id="text-9-12">
+<div id="outline-container-org3294b2b" class="outline-4">
+<h4 id="org3294b2b"><span class="section-number-4">1.4.2</span> Treemacs</h4>
+<div class="outline-text-4" id="text-1-4-2">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
 (<span style="color: #51afef;">use-package</span> <span style="color: #a991f1;">treemacs</span>
@@ -1229,39 +733,9 @@ Commented out last part is for recusrively working through a directory.  This cl
 </div>
 </div>
 </div>
-<div id="outline-container-org992f146" class="outline-3">
-<h3 id="org992f146"><span class="section-number-3">9.13</span> projectile</h3>
-<div class="outline-text-3" id="text-9-13">
-</div>
-<div id="outline-container-org8342e6e" class="outline-4">
-<h4 id="org8342e6e"><span class="section-number-4">9.13.1</span> Main</h4>
-<div class="outline-text-4" id="text-9-13-1">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">
-  (<span style="color: #51afef;">use-package</span> <span style="color: #a991f1;">projectile</span>
-    <span style="color: #C57BDB;">:ensure</span> t
-    <span style="color: #C57BDB;">:config</span>
-    (define-key projectile-mode-map (kbd <span style="color: #7bc275;">"C-c p"</span>) 'projectile-command-map)
-    (projectile-mode +1)
-    (<span style="color: #51afef;">setq</span> projectile-completion-system 'ivy)
-)
-</pre>
-</div>
-</div>
-</div>
-<div id="outline-container-orgc4a561b" class="outline-4">
-<h4 id="orgc4a561b"><span class="section-number-4">9.13.2</span> Counsel Projectile</h4>
-<div class="outline-text-4" id="text-9-13-2">
-<div class="org-src-container">
-<pre class="src src-emacs-lisp">(counsel-projectile-mode t)
-</pre>
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-orgcea1125" class="outline-3">
-<h3 id="orgcea1125"><span class="section-number-3">9.14</span> Windmove</h3>
-<div class="outline-text-3" id="text-9-14">
+<div id="outline-container-org744f03d" class="outline-4">
+<h4 id="org744f03d"><span class="section-number-4">1.4.3</span> Windmove</h4>
+<div class="outline-text-4" id="text-1-4-3">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp"><span style="color: #62686E;">;;</span><span style="color: #62686E;">(windmove-default-keybindings 'meta)</span>
 
@@ -1277,7 +751,7 @@ Commented out last part is for recusrively working through a directory.  This cl
 
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
-(global-set-key (kbd <span style="color: #7bc275;">"M-p"</span>) 'switch-window)
+
 
 </pre>
 </div>
@@ -1286,9 +760,9 @@ Commented out last part is for recusrively working through a directory.  This cl
 
 
 
-<div id="outline-container-orgd1de575" class="outline-3">
-<h3 id="orgd1de575"><span class="section-number-3">9.15</span> Ace-window</h3>
-<div class="outline-text-3" id="text-9-15">
+<div id="outline-container-org0a25c83" class="outline-4">
+<h4 id="org0a25c83"><span class="section-number-4">1.4.4</span> <span class="todo TODO">TODO</span> Ace-window</h4>
+<div class="outline-text-4" id="text-1-4-4">
 <div class="org-src-container">
 <pre class="src src-emacs-lisp">
   (<span style="color: #51afef;">use-package</span> <span style="color: #a991f1;">ace-window</span>
@@ -1302,10 +776,632 @@ Commented out last part is for recusrively working through a directory.  This cl
 </div>
 </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="outline-container-org5e1d422" class="outline-3">
+<h3 id="org5e1d422"><span class="section-number-3">1.5</span> Registers</h3>
+<div class="outline-text-3" id="text-1-5">
+</div>
+<div id="outline-container-orgf9c7528" class="outline-4">
+<h4 id="orgf9c7528"><span class="section-number-4">1.5.1</span> File Registers</h4>
+<div class="outline-text-4" id="text-1-5-1">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(set-register ?s (cons 'file <span style="color: #7bc275;">"~/.emacs.d/settings.org"</span>))
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org0ab58b3" class="outline-2">
+<h2 id="org0ab58b3"><span class="section-number-2">2</span> Writing</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org6a5b8aa" class="outline-3">
+<h3 id="org6a5b8aa"><span class="section-number-3">2.1</span> Spelling and Grammar</h3>
+<div class="outline-text-3" id="text-2-1">
+</div>
+<div id="outline-container-org454ca95" class="outline-4">
+<h4 id="org454ca95"><span class="section-number-4">2.1.1</span> Dubcaps mode.</h4>
+<div class="outline-text-4" id="text-2-1-1">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #51afef;">defun</span> <span style="color: #5cEfFF;">dcaps-to-scaps</span> ()
+  <span style="color: #7e7e87;">"Convert word in DOuble CApitals to Single Capitals."</span>
+  (<span style="color: #51afef;">interactive</span>)
+  (<span style="color: #51afef;">and</span> (= ?w (char-syntax (char-before)))
+       (<span style="color: #51afef;">save-excursion</span>
+         (<span style="color: #51afef;">and</span> (<span style="color: #51afef;">if</span> (called-interactively-p)
+                  (skip-syntax-backward <span style="color: #7bc275;">"w"</span>)
+                (= -3 (skip-syntax-backward <span style="color: #7bc275;">"w"</span>)))
+              (<span style="color: #51afef;">let</span> (case-fold-search)
+                (looking-at <span style="color: #7bc275;">"\\b[[:upper:]]\\{2\\}[[:lower:]]"</span>))
+              (capitalize-word 1)))))
+
+(add-hook 'post-self-insert-hook #'dcaps-to-scaps nil 'local)
+
+
+<span style="color: #62686E;">;; </span><span style="color: #62686E;">Dubcaps mode</span>
+
+(<span style="color: #51afef;">define-minor-mode</span> <span style="color: #5cEfFF;">dubcaps-mode</span>
+  <span style="color: #7e7e87;">"Toggle `</span><span style="color: #a991f1;">dubcaps-mode</span><span style="color: #7e7e87;">'.  Converts words in DOuble CApitals to</span>
+<span style="color: #7e7e87;">Single Capitals as you type."</span>
+  <span style="color: #C57BDB;">:init-value</span> nil
+  <span style="color: #C57BDB;">:lighter</span> (<span style="color: #7bc275;">" DC"</span>)
+  (<span style="color: #51afef;">if</span> dubcaps-mode
+      (add-hook 'post-self-insert-hook #'dcaps-to-scaps nil 'local)
+    (remove-hook 'post-self-insert-hook #'dcaps-to-scaps 'local)))
+
+(add-hook 'org-mode-hook 'dubcaps-mode)
+(add-hook 'markdown-mode-hook 'dubcaps-mode)
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org19660b2" class="outline-4">
+<h4 id="org19660b2"><span class="section-number-4">2.1.2</span> Flyspell</h4>
+<div class="outline-text-4" id="text-2-1-2">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"> (<span style="color: #51afef;">use-package</span> <span style="color: #a991f1;">flyspell-correct</span>
+   <span style="color: #C57BDB;">:ensure</span> t
+   <span style="color: #C57BDB;">:after</span> flyspell
+   <span style="color: #C57BDB;">:bind</span> (<span style="color: #C57BDB;">:map</span> flyspell-mode-map (<span style="color: #7bc275;">"C-'"</span> . flyspell-correct-wrapper)))
+
+ (<span style="color: #51afef;">use-package</span> <span style="color: #a991f1;">flyspell-correct-ivy</span>
+  <span style="color: #C57BDB;">:ensure</span> t 
+  <span style="color: #C57BDB;">:after</span> flyspell-correct)
+
+ <span style="color: #62686E;">;; </span><span style="color: #62686E;">Hook to org mode</span>
+<span style="color: #62686E;">;; </span><span style="color: #62686E;">(add-hook 'org-mode-hook 'flyspell-mode)</span>
+
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org6f997c3" class="outline-3">
+<h3 id="org6f997c3"><span class="section-number-3">2.2</span> Citations</h3>
+<div class="outline-text-3" id="text-2-2">
+</div>
+<div id="outline-container-org2c72b2d" class="outline-4">
+<h4 id="org2c72b2d"><span class="section-number-4">2.2.1</span> Reftex</h4>
+<div class="outline-text-4" id="text-2-2-1">
+</div>
+<ol class="org-ol">
+<li><a id="orgd7a5a56"></a>Enable<br />
+<div class="outline-text-5" id="text-2-2-1-1">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">
+
+(<span style="color: #51afef;">use-package</span> <span style="color: #a991f1;">reftex</span>
+  <span style="color: #C57BDB;">:ensure</span> t
+  <span style="color: #C57BDB;">:config</span>
+  (<span style="color: #51afef;">setq</span> bibtex-completion-bibliography '(<span style="color: #7bc275;">"~/org-ref-test/bibs/Testing2.bib"</span>)
+        bibtex-completion-format-citation-functions '((org-mode      . bibtex-completion-format-citation-pandoc-citeproc)
+                                                      (latex-mode    . bibtex-completion-format-citation-cite)
+                                                      (markdown-mode . bibtex-completion-format-citation-pandoc-citeproc)
+                                                      (default       . bibtex-completion-format-citation-default))
+        ivy-bibtex-default-action 'ivy-bibtex-insert-citation
+        bibtex-completion-pdf-field <span style="color: #7bc275;">"File"</span>)
+  <span style="color: #C57BDB;">:bind</span> ((<span style="color: #7bc275;">"C-C i"</span> . ivy-bibtex)))
+
+
+
+<span style="color: #62686E;">;; </span><span style="color: #62686E;">(setq bibtex-completion-bibliography</span>
+<span style="color: #62686E;">;;       </span><span style="color: #62686E;">'("~/org-ref-test/bibs/Testing2.bib"</span>
+<span style="color: #62686E;">;;         </span><span style="color: #62686E;">))</span>
+<span style="color: #62686E;">;; </span>
+<span style="color: #62686E;">;; </span>
+<span style="color: #62686E;">;; </span><span style="color: #62686E;">(setq bibtex-completion-format-citation-functions</span>
+<span style="color: #62686E;">;;   </span><span style="color: #62686E;">'((org-mode      . bibtex-completion-format-citation-pandoc-citeproc)</span>
+<span style="color: #62686E;">;;     </span><span style="color: #62686E;">(latex-mode    . bibtex-completion-format-citation-cite)</span>
+<span style="color: #62686E;">;;     </span><span style="color: #62686E;">(markdown-mode . bibtex-completion-format-citation-pandoc-citeproc)</span>
+<span style="color: #62686E;">;;     </span><span style="color: #62686E;">(default       . bibtex-completion-format-citation-default)))</span>
+
+
+
+<span style="color: #62686E;">;; </span><span style="color: #62686E;">(setq ivy-bibtex-default-action 'ivy-bibtex-insert-citation)</span>
+<span style="color: #62686E;">;; </span>
+<span style="color: #62686E;">;; </span><span style="color: #62686E;">(global-set-key (kbd "C-c i") 'ivy-bibtex)</span>
+<span style="color: #62686E;">;; </span>
+<span style="color: #62686E;">;; </span><span style="color: #62686E;">(setq bibtex-completion-pdf-field "File")</span>
+<span style="color: #62686E;">;; </span>
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org92e632a"></a>Functions<br />
+<ol class="org-ol">
+<li><a id="org1fd4d0c"></a><span class="todo TODO">TODO</span> Misc<br />
+<div class="outline-text-6" id="text-2-2-1-2-1">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">
+
+(<span style="color: #51afef;">defun</span> <span style="color: #5cEfFF;">bibtex-completion-open-pdf-of-entry-at-point</span> ()
+  (<span style="color: #51afef;">interactive</span>)
+  (<span style="color: #51afef;">save-excursion</span>
+    (bibtex-beginning-of-entry)
+    (<span style="color: #51afef;">when</span> (looking-at bibtex-entry-maybe-empty-head)
+      (bibtex-completion-open-pdf (bibtex-key-in-head)))))
+
+
+(<span style="color: #51afef;">defun</span> <span style="color: #5cEfFF;">my/print-reference-title</span> ()
+  <span style="color: #7e7e87;">"Print the title to the reference at point in the minibuffer."</span>
+  (<span style="color: #51afef;">interactive</span>)
+  (message
+   (assoc-default <span style="color: #7bc275;">"title"</span>
+                  (bibtex-completion-get-entry
+                   (org-ref-get-bibtex-key-under-cursor)))))
+
+
+
+
+</pre>
+</div>
+</div>
+</li>
+</ol>
+</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org1a1250e" class="outline-3">
+<h3 id="org1a1250e"><span class="section-number-3">2.3</span> Templating</h3>
+<div class="outline-text-3" id="text-2-3">
+</div>
+<div id="outline-container-orgde60d01" class="outline-4">
+<h4 id="orgde60d01"><span class="section-number-4">2.3.1</span> Yasnippets</h4>
+<div class="outline-text-4" id="text-2-3-1">
+</div>
+<ol class="org-ol">
+<li><a id="org07ebaac"></a>Setup<br />
+<div class="outline-text-5" id="text-2-3-1-1">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #51afef;">use-package</span> <span style="color: #a991f1;">yasnippet</span>
+  <span style="color: #C57BDB;">:ensure</span> t
+  <span style="color: #C57BDB;">:bind</span> (<span style="color: #7bc275;">"C-c 8"</span> . yas-insert-snippet)
+  <span style="color: #C57BDB;">:config</span>
+  (yas-global-mode 1))
+
+<span style="color: #62686E;">;; </span><span style="color: #62686E;">(yas-global-mode 1)</span>
+
+<span style="color: #62686E;">;; </span><span style="color: #62686E;">(global-set-key (kbd "C-c 8") 'yas-insert-snippet)</span>
+</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd7d2aaa" class="outline-2">
+<h2 id="orgd7d2aaa"><span class="section-number-2">3</span> Major modes</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org95d0b9d" class="outline-3">
+<h3 id="org95d0b9d"><span class="section-number-3">3.1</span> Org-mode</h3>
+<div class="outline-text-3" id="text-3-1">
+</div>
+<div id="outline-container-org93336b7" class="outline-4">
+<h4 id="org93336b7"><span class="section-number-4">3.1.1</span> Required</h4>
+<div class="outline-text-4" id="text-3-1-1">
+</div>
+<ol class="org-ol">
+<li><a id="orge867eb4"></a>Enable Export as markdown<br />
+<div class="outline-text-5" id="text-3-1-1-1">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">
+(eval-after-load <span style="color: #7bc275;">"org"</span>
+  '(<span style="color: #51afef;">require</span> '<span style="color: #a991f1;">ox-md</span> nil t))
+
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org6b9eed7"></a>Pandoc-mode Org-mode<br />
+<div class="outline-text-5" id="text-3-1-1-2">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">
+(add-hook 'org-mode-hook 'pandoc-mode)
+(<span style="color: #51afef;">setq</span> org-pandoc-options-for-latex-pdf '((pdf-engine . <span style="color: #7bc275;">"pdflatex"</span>)))
+
+</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div id="outline-container-org8f54e1b" class="outline-4">
+<h4 id="org8f54e1b"><span class="section-number-4">3.1.2</span> Org-babel</h4>
+<div class="outline-text-4" id="text-3-1-2">
+</div>
+<ol class="org-ol">
+<li><a id="orgb69c48d"></a>Load Languages<br />
+<div class="outline-text-5" id="text-3-1-2-1">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((python . t)))
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org2b46c72"></a>Disable prompt<br />
+<div class="outline-text-5" id="text-3-1-2-2">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #51afef;">setq</span> org-confirm-babel-evaluate nil) 
+</pre>
+</div>
+</div>
+</li>
+<li><a id="orge038065"></a>Language Settings<br />
+<ol class="org-ol">
+<li><a id="org2fa698f"></a>Python<br />
+<div class="outline-text-6" id="text-3-1-2-3-1">
+<p>
+Set org-babel python command to python3
+</p>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">
+(<span style="color: #51afef;">setq</span> org-babel-python-command <span style="color: #7bc275;">"python3"</span>)
+
+</pre>
+</div>
+</div>
+</li>
+</ol>
+</li>
+</ol>
+</div>
+<div id="outline-container-org1bd9b4f" class="outline-4">
+<h4 id="org1bd9b4f"><span class="section-number-4">3.1.3</span> Tweaks</h4>
+<div class="outline-text-4" id="text-3-1-3">
+</div>
+<ol class="org-ol">
+<li><a id="org715fe86"></a>Org-Identation<br />
+<div class="outline-text-5" id="text-3-1-3-1">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #51afef;">setq</span> org-startup-indented t)
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org7f4ac7e"></a>Better org-refile<br />
+<div class="outline-text-5" id="text-3-1-3-2">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">
+(<span style="color: #51afef;">setq</span> org-refile-targets '((nil <span style="color: #C57BDB;">:maxlevel</span> . 9)
+                                (org-agenda-files <span style="color: #C57BDB;">:maxlevel</span> . 9)))
+(<span style="color: #51afef;">setq</span> org-outline-path-complete-in-steps nil)         <span style="color: #62686E;">; </span><span style="color: #62686E;">Refile in a single go</span>
+(<span style="color: #51afef;">setq</span> org-refile-use-outline-path t)                  <span style="color: #62686E;">; </span><span style="color: #62686E;">Show full paths for refiling</span>
+
+
+</pre>
+</div>
+</div>
+</li>
+<li><a id="org61a52e5"></a>SRC-blocks behaviour<br />
+<div class="outline-text-5" id="text-3-1-3-3">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">
+(<span style="color: #51afef;">defvar</span> <span style="color: #DFDFDF;">org-blocks-hidden</span> nil)
+
+(<span style="color: #51afef;">defun</span> <span style="color: #5cEfFF;">org-toggle-blocks</span>
+()
+  (<span style="color: #51afef;">interactive</span>)
+  (<span style="color: #51afef;">if</span> org-blocks-hidden
+      (org-show-block-all)
+    (org-hide-block-all))
+  (<span style="color: #51afef;">setq-local</span> org-blocks-hidden (not org-blocks-hidden)))
+
+(add-hook 'org-mode-hook 'org-toggle-blocks)
+
+(define-key org-mode-map (kbd <span style="color: #7bc275;">"C-c t"</span>) 'org-toggle-blocks)
+</pre>
+</div>
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">
+(<span style="color: #51afef;">setq</span> org-src-tab-acts-natively t)
+
+</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-org4d6d0d3" class="outline-4">
+<h4 id="org4d6d0d3"><span class="section-number-4">3.1.4</span> Org-Journal</h4>
+<div class="outline-text-4" id="text-3-1-4">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">
+(<span style="color: #51afef;">use-package</span> <span style="color: #a991f1;">org-journal</span>
+  <span style="color: #C57BDB;">:ensure</span> t
+  <span style="color: #C57BDB;">:config</span>
+  (<span style="color: #51afef;">setq</span> org-journal-dir <span style="color: #7bc275;">"~/work/journal/"</span>))
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0229281" class="outline-4">
+<h4 id="org0229281"><span class="section-number-4">3.1.5</span> Org-Super-Agenda</h4>
+<div class="outline-text-4" id="text-3-1-5">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">
+(<span style="color: #51afef;">use-package</span> <span style="color: #a991f1;">org-super-agenda</span>
+  <span style="color: #C57BDB;">:ensure</span> t
+  <span style="color: #C57BDB;">:config</span>
+ (<span style="color: #51afef;">setq</span> org-super-agenda-groups '(
+                           (<span style="color: #C57BDB;">:name</span> <span style="color: #7bc275;">"Waiting"</span>
+                               <span style="color: #C57BDB;">:tag</span> <span style="color: #7bc275;">"shop"</span>))))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgac56b45" class="outline-4">
+<h4 id="orgac56b45"><span class="section-number-4">3.1.6</span> Org-agenda</h4>
+<div class="outline-text-4" id="text-3-1-6">
+<p>
+Commented out last part is for recusrively working through a directory.  This clashed with dashboard and recentf, as these files were being opened at startup.  One will do. 
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">
+
+
+(<span style="color: #51afef;">setq</span> org-agenda-files (apply 'append
+                             (mapcar
+                              (<span style="color: #51afef;">lambda</span> (directory)
+                                (directory-files-recursively
+                                 directory org-agenda-file-regexp))
+                              '(<span style="color: #7bc275;">"~/work/agenda/"</span>))))
+ (define-key global-map <span style="color: #7bc275;">"\C-ca"</span> 'org-agenda)
+(<span style="color: #51afef;">setq</span> org-log-done t)
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgb837e51" class="outline-3">
+<h3 id="orgb837e51"><span class="section-number-3">3.2</span> Environments</h3>
+<div class="outline-text-3" id="text-3-2">
+</div>
+<div id="outline-container-orgd633e5e" class="outline-4">
+<h4 id="orgd633e5e"><span class="section-number-4">3.2.1</span> Python</h4>
+<div class="outline-text-4" id="text-3-2-1">
+</div>
+<ol class="org-ol">
+<li><a id="org8fcdb11"></a>Elpy<br />
+<div class="outline-text-5" id="text-3-2-1-1">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #51afef;">use-package</span> <span style="color: #a991f1;">elpy</span>
+  <span style="color: #C57BDB;">:ensure</span> t
+  <span style="color: #C57BDB;">:init</span> (elpy-enable)
+  <span style="color: #C57BDB;">:config</span> (<span style="color: #51afef;">setq</span> elpy-rpc-python-command <span style="color: #7bc275;">"python3"</span>)
+  )
+</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgf792a7b" class="outline-3">
+<h3 id="orgf792a7b"><span class="section-number-3">3.3</span> Shell</h3>
+<div class="outline-text-3" id="text-3-3">
+</div>
+<div id="outline-container-org5d19a3c" class="outline-4">
+<h4 id="org5d19a3c"><span class="section-number-4">3.3.1</span> Open Shell</h4>
+<div class="outline-text-4" id="text-3-3-1">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span style="color: #7bc275;">"&lt;f7&gt;"</span>) 'shell)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgb66fa19" class="outline-2">
+<h2 id="orgb66fa19"><span class="section-number-2">4</span> Minor Modes/Tools</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-orgeb5a3f3" class="outline-3">
+<h3 id="orgeb5a3f3"><span class="section-number-3">4.1</span> Ivy, Counsel, Swiper</h3>
+<div class="outline-text-3" id="text-4-1">
+</div>
+<div id="outline-container-org6557578" class="outline-4">
+<h4 id="org6557578"><span class="section-number-4">4.1.1</span> Counsel</h4>
+<div class="outline-text-4" id="text-4-1-1">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #51afef;">use-package</span> <span style="color: #a991f1;">counsel</span> <span style="color: #C57BDB;">:ensure</span> t
+  <span style="color: #C57BDB;">:after</span> ivy
+  <span style="color: #C57BDB;">:bind</span> ((<span style="color: #7bc275;">"M-x"</span> . 'counsel-M-x)
+         (<span style="color: #7bc275;">"C-x C-f"</span> . 'counsel-find-file)
+         (<span style="color: #7bc275;">"&lt;f1&gt; f"</span> . 'counsel-describe-function)
+         (<span style="color: #7bc275;">"&lt;f1&gt; v"</span> . 'counsel-describe-variable)
+         (<span style="color: #7bc275;">"&lt;f1&gt; o"</span> . 'counsel-describe-symbol)
+         (<span style="color: #7bc275;">"&lt;f1&gt; l"</span> . 'counsel-find-library)
+         (<span style="color: #7bc275;">"&lt;f2&gt; i"</span> . 'counsel-info-lookup-symbol)
+         (<span style="color: #7bc275;">"&lt;f2&gt; u"</span> . 'counsel-unicode-char)
+         (<span style="color: #7bc275;">"C-c g"</span> . 'counsel-git)
+         (<span style="color: #7bc275;">"C-c j"</span> . 'counsel-git-grep)
+         (<span style="color: #7bc275;">"C-c k"</span> . 'counsel-ag)
+         (<span style="color: #7bc275;">"C-S-o"</span> . 'counsel-rhythmbox)
+         <span style="color: #C57BDB;">:map</span> minibuffer-local-map (<span style="color: #7bc275;">"C-r"</span> . 'counsel-minibuffer-history)))
+
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgbdf241f" class="outline-4">
+<h4 id="orgbdf241f"><span class="section-number-4">4.1.2</span> Ivy</h4>
+<div class="outline-text-4" id="text-4-1-2">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #51afef;">use-package</span> <span style="color: #a991f1;">ivy</span> <span style="color: #C57BDB;">:ensure</span> t
+  <span style="color: #C57BDB;">:init</span> (<span style="color: #51afef;">setq</span> ivy-use-virtual-buffers t
+  enable-recursive-minibuffers t)
+ <span style="color: #C57BDB;">:demand</span>  <span style="color: #C57BDB;">:config</span> (ivy-mode 1)
+ <span style="color: #C57BDB;">:bind</span> ((<span style="color: #7bc275;">"C-c C-r"</span> . ivy-resume)))
+
+
+
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org597bfa7" class="outline-4">
+<h4 id="org597bfa7"><span class="section-number-4">4.1.3</span> Swiper</h4>
+<div class="outline-text-4" id="text-4-1-3">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #51afef;">use-package</span> <span style="color: #a991f1;">swiper</span> <span style="color: #C57BDB;">:ensure</span> t
+  <span style="color: #C57BDB;">:after</span> ivy
+  <span style="color: #C57BDB;">:bind</span> ((<span style="color: #7bc275;">"C-s"</span> . swiper)
+         (<span style="color: #7bc275;">"C-r"</span> . swiper)))
+
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2ccda61" class="outline-3">
+<h3 id="org2ccda61"><span class="section-number-3">4.2</span> Pdf-tools</h3>
+<div class="outline-text-3" id="text-4-2">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(<span style="color: #51afef;">use-package</span> <span style="color: #a991f1;">pdf-tools</span>
+  <span style="color: #C57BDB;">:ensure</span> t
+  <span style="color: #C57BDB;">:config</span> (pdf-tools-install))
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org710d38b" class="outline-3">
+<h3 id="org710d38b"><span class="section-number-3">4.3</span> Centaur-tabs</h3>
+<div class="outline-text-3" id="text-4-3">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">
+(<span style="color: #51afef;">use-package</span> <span style="color: #a991f1;">centaur-tabs</span>
+  <span style="color: #C57BDB;">:ensure</span> t
+  <span style="color: #C57BDB;">:demand</span>
+  <span style="color: #C57BDB;">:config</span>
+  (centaur-tabs-mode t)
+  <span style="color: #C57BDB;">:bind</span>
+  (<span style="color: #7bc275;">"M-n"</span> . centaur-tabs-backward)
+  (<span style="color: #7bc275;">"M-p"</span> . centaur-tabs-forward))
+
+
+(<span style="color: #51afef;">setq</span> centaur-tabs-set-icons t)
+(<span style="color: #51afef;">setq</span> centaur-tabs-plain-icons t)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2d3626d" class="outline-3">
+<h3 id="org2d3626d"><span class="section-number-3">4.4</span> projectile</h3>
+<div class="outline-text-3" id="text-4-4">
+</div>
+<div id="outline-container-org7ba51db" class="outline-4">
+<h4 id="org7ba51db"><span class="section-number-4">4.4.1</span> Main</h4>
+<div class="outline-text-4" id="text-4-4-1">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">
+  (<span style="color: #51afef;">use-package</span> <span style="color: #a991f1;">projectile</span>
+    <span style="color: #C57BDB;">:ensure</span> t
+    <span style="color: #C57BDB;">:config</span>
+    (define-key projectile-mode-map (kbd <span style="color: #7bc275;">"C-c p"</span>) 'projectile-command-map)
+    (projectile-mode +1)
+    (<span style="color: #51afef;">setq</span> projectile-completion-system 'ivy)
+)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org9021dca" class="outline-4">
+<h4 id="org9021dca"><span class="section-number-4">4.4.2</span> Counsel Projectile</h4>
+<div class="outline-text-4" id="text-4-4-2">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">(counsel-projectile-mode t)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org8c3922e" class="outline-2">
+<h2 id="org8c3922e"><span class="section-number-2">5</span> Testing</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-org76747ec" class="outline-3">
+<h3 id="org76747ec"><span class="section-number-3">5.1</span> Switch Window</h3>
+<div class="outline-text-3" id="text-5-1">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">  <span style="color: #62686E;">;; </span><span style="color: #62686E;">(use-package switch-window</span>
+   <span style="color: #62686E;">;; </span><span style="color: #62686E;">:ensure t</span>
+   <span style="color: #62686E;">;; </span><span style="color: #62686E;">:bind (("C-x o" . switch-window)</span>
+<span style="color: #62686E;">;;</span><span style="color: #62686E;">          ("C-x 1" . switch-window-then-maximize)</span>
+<span style="color: #62686E;">;;</span><span style="color: #62686E;">          ("C-x 2" . switch-window-then-split-below)</span>
+<span style="color: #62686E;">;;</span><span style="color: #62686E;">          ("C-x 3" . switch-window-then-split-right)</span>
+<span style="color: #62686E;">;;</span><span style="color: #62686E;">          ("C-x 0" . switch-window-then-delete)</span>
+<span style="color: #62686E;">;;</span><span style="color: #62686E;">          ("C-x 4 d" . switch-window-then-dired)</span>
+<span style="color: #62686E;">;;</span><span style="color: #62686E;">          ("C-x 4 f" . switch-window-then-find-file)</span>
+<span style="color: #62686E;">;;</span><span style="color: #62686E;">          ("C-x 4 m" . switch-window-then-compose-mail)</span>
+<span style="color: #62686E;">;;</span><span style="color: #62686E;">          ("C-x 4 r" . switch-window-then-find-file-read-only)</span>
+<span style="color: #62686E;">;;</span><span style="color: #62686E;">          ("C-x 4 C-f" . switch-window-then-find-file)</span>
+<span style="color: #62686E;">;;</span><span style="color: #62686E;">          ("C-x 4 C-o" . switch-window-then-find-file-read-only)</span>
+<span style="color: #62686E;">;;</span><span style="color: #62686E;">          ("C-x 4 C-f" . switch-window-then-find-file)</span>
+<span style="color: #62686E;">;;</span><span style="color: #62686E;">          ("C-x 4 C-o" . switch-window-then-display-buffer)</span>
+<span style="color: #62686E;">;;</span><span style="color: #62686E;">          ("C-x 4 0" . switch-window-then-kill-buffer)))</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga8d166a" class="outline-3">
+<h3 id="orga8d166a"><span class="section-number-3">5.2</span> Switch-window Quick</h3>
+<div class="outline-text-3" id="text-5-2">
+<div class="org-src-container">
+<pre class="src src-emacs-lisp">
+(<span style="color: #51afef;">defun</span> <span style="color: #5cEfFF;">quick-switch-window</span> ()
+   (<span style="color: #51afef;">interactive</span>)
+  (switch-window))
+(global-set-key (kbd <span style="color: #7bc275;">"C-?"</span>) 'quick-switch-window)
+
+
+(<span style="color: #51afef;">setq</span> switch-window-shortcut-style 'qwerty)
+</pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Jacob Stokes</p>
-<p class="date">Created: 2020-07-13 Mon 23:00</p>
+<p class="date">Created: 2020-07-14 Tue 23:47</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

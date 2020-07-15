@@ -81,8 +81,8 @@ Does what is says on the tin.  Allows the Dashboard to be loaded.
 
 #+BEGIN_SRC emacs-lisp
 
-  (use-package all-the-icons)
-
+  (use-package all-the-icons
+    :ensure t)
 
 #+END_SRC
 *** Cursor

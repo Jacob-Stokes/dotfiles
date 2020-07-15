@@ -4,9 +4,9 @@
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("org-refile-last-stored"
  (filename . "~/dotfiles/emacs/.emacs.d/settings.org")
- (front-context-string . "** Add in dashbo")
- (rear-context-string . "t)\n\n\n\n#+END_SRC\n")
- (position . 4639))
+ (front-context-string . "*** TODO Ace-win")
+ (rear-context-string . "\n\n\n#+END_SRC\n\n\n\n")
+ (position . 8463))
 ("org.org"
  (filename . "~/main/org.org")
  (front-context-string)
