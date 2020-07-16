@@ -2,11 +2,11 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("org-refile-last-stored"
- (filename . "~/dotfiles/emacs/.emacs.d/settings.org")
- (front-context-string . "*** TODO Ace-win")
- (rear-context-string . "\n\n\n#+END_SRC\n\n\n\n")
- (position . 8463))
+(("orgscratch.org"
+ (filename . "~/work/notes/orgscratch.org")
+ (front-context-string)
+ (rear-context-string)
+ (position . 8))
 ("org.org"
  (filename . "~/main/org.org")
  (front-context-string)

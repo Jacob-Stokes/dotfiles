@@ -45,7 +45,8 @@
 
 (setq inhibit-splash-screen t)
 
-(use-package all-the-icons)
+(use-package all-the-icons
+  :ensure t)
 
 (setq-default cursor-type 'hollow)
 
