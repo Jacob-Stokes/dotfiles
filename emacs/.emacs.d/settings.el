@@ -217,6 +217,9 @@ Version 2019-02-26"
 
 (set-register ?s (cons 'file "~/.emacs.d/settings.org"))
 
+(setq backup-directory-alist
+      `(("." . ,(concat user-emacs-directory "backups"))))
+
 (defun dcaps-to-scaps ()
   "Convert word in DOuble CApitals to Single Capitals."
   (interactive)

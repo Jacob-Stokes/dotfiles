@@ -1,6 +1,4 @@
 
-;;;;Org mode configuration
-;; Enable Org mode
 (require 'org)
 (require 'cl-lib)
 

@@ -1,0 +1,116 @@
+* Salesforce
+
+
+** TargetX Upgrade
+ 
+*** July '20
+
+**** Installed packages prior to update
+
+| Base                | 2006.3 |
+| Payment Connector   | 2004.1 |
+| Recruitment Manager | 2007.1 |
+| Email               | 2004.9 |
+| Events              | 2003.2 |
+| Permission Scanner  | 2003.1 |
+| Online Application  | 2003.6 |
+| Applicant Dashboard | 2003.1 |
+| Communities         |    N/A |
+| TargetX Decision    | 1912.6 |
+
+**** TODO Email Upgrade [1/3]
+See [[https://targetxcrm.force.com/usercommunity/s/article/July-20-Email-Upgrade?r=5&ui-force-components-controllers-recordGlobalValueProvider.RecordGvp.getRecord=1#start_1910][Instructions]]
+***** TODO Add to further profiles/permission sets if necessary [2/2]
+Permissions need to be updated for the following fields:
+
+- Email Engagement Score
+- Unique Broadcast Count
+- Unique Opens
+- Unique Interacts
+- Last Sent
+- Last Open
+- Last Interact
+
+This has been done for *API User, System Admin, Widening Participation*
+
+***** TODO Update Relationship Page Layout
+The VF page *Ind_Activity_Relationship* needs to be added to a 1-column section in the page layout for the object 'Family Relationship Layout'
+
+Additionally, access to the VF page must be added to any profiles that need access.  It has thus far been added to *API User, System Admin, WP User*
+
+***** DONE Todo Enable Email Engagement Metric Settings
+CLOSED: [2020-07-14 Tue 17:13]
+
+Tick the boxes:
+- Enable Email Engagement Metrics Upload
+- Default Email Engagement Trigger Active
+
+Ignored the warning for 'Unable to load your Org's email configuration.  Please contact the TargetX support team for assistance.
+- The reason for this error is that Metrics don't exist for Sandboxes.
+
+
+
+
+**** TODO Events Upgrade [0/2]
+See [[https://targetxcrm.force.com/usercommunity/s/article/July-20-Events-Upgrade?r=5&ui-force-components-controllers-recordGlobalValueProvider.RecordGvp.getRecord=1#start_2003][Instructions]]
+***** TODO Update Permissions for Internal users
+***** TODO Update Permisions for Events Site Users
+
+**** TODO Online Application Upgrade [0/1]
+See [[https://targetxcrm.force.com/usercommunity/s/article/July-20-Online-Application-Upgrade?r=5&ui-force-components-controllers-recordGlobalValueProvider.RecordGvp.getRecord=1#start_dec_19][Instructions]]
+***** TODO Review Custom CSS
+**** TODO Applicant Dashboard Upgrade [0/1]
+See [[https://targetxcrm.force.com/usercommunity/s/article/July-20-Applicant-Dashboard-Upgrade?r=5&ui-force-components-controllers-recordGlobalValueProvider.RecordGvp.getRecord=1#start_1912][Instructions]]
+***** TODO Update Links to hide redirects
+**** TODO Applicant Review (TargetX Decision)
+* SITS
+** Tasks
+*** Updating RPV Status
++ Fill in details against the relevant CBO record
+  + *CBO_UDF6* - The date specified by the admin
+  + *CBO_UDF7* - Enter 'RPV'
+  + *CBO_UDF8* - Enter required deposit (if any) here
+  + *CBO_UDF0* - enter the last working date before the registration date (so if registration date falls on a Monday, enter the previous Friday's date here).
++ Highlight the 'Exec programmes' spreadsheet to confirm that the details have been added to the CBO.
+
+
+
+
+
+
+
+** Departmental Instructions
+*** Management
+**** Graduation SITS reports
+
+Four reports to run for each graduating programme:
+++
+* To Sort  
+** UGA  Confirmation 
+
++ Virtual Results stickers
+  + Would literally print off stickers beforehand
+  + Default - firm and conditional students
+  + Click view sticker
+  + Shows WP information - POLAR and IMD
+  + 
+
+
+
+
+
+
+
+
+
+ST102-15 BA/Bsc
+
+ST-102 UB2-M
+x
+
+sxoaxox
+
+
+a>.
+
+`

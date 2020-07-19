@@ -342,6 +342,14 @@ Does what is says on the tin.  Allows the Dashboard to be loaded.
 (set-register ?s (cons 'file "~/.emacs.d/settings.org"))
 
 #+END_SRC
+** Auto-Save
+#+BEGIN_SRC emacs-lisp
+
+  (setq backup-directory-alist
+        `(("." . ,(concat user-emacs-directory "backups"))))
+
+
+#+END_SRC
 * Writing 
 ** Spelling and Grammar
 *** Dubcaps mode.
